@@ -1,9 +1,9 @@
-import projectReducer from "./projectReducer";
+import postReducer from "./postReducer";
 
 const { combineReducers } = require("redux");
 
 const rootReducer = combineReducers({
-  posts: projectReducer
+  posts: postReducer
 });
 
 export default rootReducer;
