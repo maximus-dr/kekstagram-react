@@ -1,0 +1,60 @@
+.add-post {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 569px;
+  background-image: url("../../../assets/img/logo-background-1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+
+  &__wrapper {
+    margin: 0 auto;
+    width: 582px;
+    text-align: center;
+  }
+
+  &__fieldset {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 569px;
+    background-image: url("../../../assets/img/logo-mask.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+  }
+
+  &__label {
+    position: absolute;
+    top: 194px;
+    left: 203px;
+    width: 180px;
+    height: 181px;
+    font-size: 0;
+    background-image: url("../../../assets/img/upload-button-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &::after {
+      z-index: 100;
+      content: "";
+      position: absolute;
+      top: 32px;
+      left: 47px;
+      width: 86px;
+      height: 114px;
+      background-image: url("../../../assets/img/upload-button.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: drop-shadow(0 0 10px #943106);
+    }
+
+    &:hover::after,
+    &:active::after {
+      filter: drop-shadow(0 0 10px #622104);
+      transform: scale(1.1);
+    }
+  }
+}
