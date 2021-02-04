@@ -1,12 +1,16 @@
 .post-link {
   position: relative;
+  margin: 0;
+  width: 182px;
+  height: 182px;
   line-height: 0;
+  overflow: hidden;
 }
 
 .post-link__img {
-  max-width: auto;
-  width: 100%;
-  height: auto;
+  position: absolute;
+  width: auto;
+  min-height: 182px;
 }
 
 .post-link__stats {
