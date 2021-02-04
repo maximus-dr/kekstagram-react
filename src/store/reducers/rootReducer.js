@@ -1,5 +1,6 @@
 import postReducer from "./postReducer";
 
+
 const { combineReducers } = require("redux");
 
 const rootReducer = combineReducers({

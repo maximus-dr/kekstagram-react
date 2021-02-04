@@ -1,0 +1,29 @@
+.post {
+  z-index: 1000;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  max-width: 600px;
+  margin-bottom: 60px;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+
+  &__img {
+    width: 600px;
+    height: 600px;
+    overflow: hidden;
+  }
+
+  &__img img {
+    height: 600px;
+    width: auto;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}

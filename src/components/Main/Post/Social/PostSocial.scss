@@ -1,0 +1,167 @@
+.social {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  color: #000000;
+  font-family: "Open Sans", "Arial", sans-serif;
+  font-weight: 400;
+  text-transform: none;
+  background-color: #ffffff;
+
+  &__header {
+    padding: 15px 15px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  &__img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+
+  &__caption {
+    margin: 0;
+    margin-right: 15px;
+  }
+
+  &__likes {
+    margin: 0;
+    margin-left: auto;
+    min-width: 125px;
+    user-select: none;
+  }
+
+  &__likes-count {
+    position: relative;
+    padding-left: 30px;
+    color: #f48181;
+    cursor: pointer;
+
+    &:hover {
+      color: #e90000;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 5px;
+      width: 20px;
+      height: 18px;
+      background-image: url("../../../../assets/img/sprite.svg");
+      background-size: 100%;
+      background-position: 0 -148px;
+      opacity: 0.5;
+    }
+
+    &:hover::before,
+    &:focus::before {
+      opacity: 1;
+    }
+
+    &:active::before {
+      opacity: 1;
+      background-position: 0 -118px;
+    }
+
+    &--active::before {
+      opacity: 1;
+      background-position: 0 -118px;
+    }
+  }
+
+  &__comments {
+    flex-basis: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__comment {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__comment-count {
+    padding-top: 20px;
+    padding-left: 65px;
+    padding-bottom: 20px;
+  }
+
+  &__comment-img {
+    width: 35px;
+    height: 35px;
+    margin-right: 15px;
+  }
+
+  &__comment-text {
+    margin: 0;
+  }
+
+  &__loadmore {
+    padding: 0;
+    padding-left: 65px;
+    padding-bottom: 20px;
+    position: relative;
+    text-align: left;
+    color: #3b77c0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__loadmore--active::after,
+  &__loadmore:active::after {
+    content: "";
+    position: absolute;
+    left: 180px;
+    right: 0;
+    width: 23px;
+    height: 23px;
+    background-image: url("../../../../assets/img/spinner-blue.svg");
+  }
+
+  &__footer {
+    border-top: 1px solid #cccccc;
+    position: relative;
+    display: flex;
+    padding: 15px;
+  }
+
+  &__footer-text {
+    width: 100%;
+    border: none;
+  }
+
+  &__footer-submit {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 0;
+    background-image: url("../../../../assets/img/sprite.svg");
+    background-size: 100%;
+    background-position: 0 0;
+    opacity: 0.6;
+    transform: translateY(-50%);
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      opacity: 1
+    }
+
+    &:active {
+      background-position: 0 -48px;
+      opacity: 1;
+    }
+  }
+}
