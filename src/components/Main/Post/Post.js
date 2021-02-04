@@ -5,15 +5,15 @@ import PostSocial from './Social/PostSocial';
 import PostImage from './PostImage';
 import PostCloseBtn from './PostCloseBtn';
 
-function Post({ post }) {
-  console.log(post);
+function Post(props) {
+  const post = props.post;
 
   return (
     <div className="post__overlay">
       <div className="post">
         <PostImage post={post} />
         <PostSocial post={post} />
-        <PostCloseBtn post={post} />
+        <PostCloseBtn history={props.history} />
       </div>
     </div>
     

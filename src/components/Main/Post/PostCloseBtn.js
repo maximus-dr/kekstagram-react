@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-export default function PostCloseBtn({ post }) {
+
+export default function PostCloseBtn({ history }) {
+
+  const handleClick = () => {
+    history.push('/');
+  }
+
   return (
-    <button className="post__close-btn">Закрыть</button>
+    <button className="post__close-btn" onClick={handleClick}>Закрыть</button>
   )
 }
