@@ -6,18 +6,20 @@ import PostList from './PostList/PostList';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
-function Main({ posts }) {
+function Main(props) {
 
-  const content = posts
-    ? (
+  const { posts } = props;
+
+  if (posts) {
+    return (
       <div className="main container">
         <PostList posts={posts} />
         <AddPost />
       </div>
-      )
-    : <div>LOADING POSTS...</div>
-
-  return <>{content}</>
+    );
+  } else {
+    return <div>LOADING POSTS...</div>
+  }
 }
 
 const mapStateToProps = (state) => {

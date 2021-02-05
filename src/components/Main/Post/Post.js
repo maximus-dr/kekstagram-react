@@ -5,35 +5,32 @@ import PostSocial from './Social/PostSocial';
 import PostImage from './PostImage';
 import PostCloseBtn from './PostCloseBtn';
 
+
 function Post(props) {
-  console.log(props);
-  const id = props.match.params.id;
-  let post = null;
 
-  if (props.posts) {
-    post = props.posts.find(post => {
-      return post.id === id;
-    })
-  }
+  const { post, closePost } = props;
 
-  console.log(post);
-  return (
-    <div className="post__overlay">
-      <div className="post">
-        Post
-        <PostImage post={post} />
-        <PostSocial post={post} />
-        <PostCloseBtn history={props.history} />
+  if (post) {
+    return (
+      <div className="post__overlay">
+        <div className="post">
+          Post
+          <PostImage post={post} />
+          <PostSocial post={post} />
+          <PostCloseBtn history={props.history} onClick={() => closePost(post)} />
+        </div>
       </div>
-    </div>
-    
-  )
+    )
+  } else {
+    return null;
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.firestore.ordered['kekstagram-posts']
+    post: state.post
   }
 }
+
 
 export default connect(mapStateToProps)(Post);
