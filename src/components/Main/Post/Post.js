@@ -6,11 +6,21 @@ import PostImage from './PostImage';
 import PostCloseBtn from './PostCloseBtn';
 
 function Post(props) {
-  const post = props.post;
+  console.log(props);
+  const id = props.match.params.id;
+  let post = null;
 
+  if (props.posts) {
+    post = props.posts.find(post => {
+      return post.id === id;
+    })
+  }
+
+  console.log(post);
   return (
     <div className="post__overlay">
       <div className="post">
+        Post
         <PostImage post={post} />
         <PostSocial post={post} />
         <PostCloseBtn history={props.history} />
@@ -20,13 +30,9 @@ function Post(props) {
   )
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const id = +ownProps.match.params.id;
-  const posts = state.posts.list;
-  const post = posts.find(post => post.id === id);
-
+const mapStateToProps = (state) => {
   return {
-    post
+    posts: state.firestore.ordered['kekstagram-posts']
   }
 }
 
