@@ -6,8 +6,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import rootReducer from './store/reducers/rootReducer';
 import thunk from 'redux-thunk';
-import { getFirebase, ReactReduxFirebaseProvider } from 'react-redux-firebase';
-import { getFirestore, reduxFirestore, createFirestoreInstance } from 'redux-firestore';
+import { getFirebase } from 'react-redux-firebase';
+import { getFirestore, reduxFirestore } from 'redux-firestore';
 import firebase from 'firebase/app';
 import firebaseConfig from './firebase/config';
 
@@ -17,19 +17,17 @@ const store = createStore(rootReducer, compose(
   reduxFirestore(firebase, firebaseConfig)
 ));
 
-const reactReduxFiresbaseProps = {
-  firebase,
-  config: firebaseConfig,
-  dispatch: store.dispatch,
-  createFirestoreInstance
-};
+// const reactReduxFiresbaseProps = {
+//   firebase,
+//   config: firebaseConfig,
+//   dispatch: store.dispatch,
+//   createFirestoreInstance
+// };
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ReactReduxFirebaseProvider {...reactReduxFiresbaseProps}>
-        <App />
-      </ReactReduxFirebaseProvider>
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

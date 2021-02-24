@@ -1,5 +1,5 @@
 
-const postReducer = (state = null, action) => {
+const postReducer = (post = null, action) => {
 
   switch (action.type) {
     case 'OPEN_POST':
@@ -8,8 +8,14 @@ const postReducer = (state = null, action) => {
       };
     case 'CLOSE_POST':
       return null
+    case 'ADD_COMMENT':
+      const comments = ([...post.comments, action.comment]);
+      return {
+        ...post,
+        comments
+      };
     default:
-      return state;
+      return post;
   }
 }
 

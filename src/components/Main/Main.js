@@ -3,12 +3,20 @@ import AddPost from './AddPost/AddPost';
 import './Main.scss';
 import { connect } from 'react-redux';
 import PostList from './PostList/PostList';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+// import { firestoreConnect } from 'react-redux-firebase';
+// import { compose } from 'redux';
 
 function Main(props) {
 
-  const { posts } = props;
+  const posts = [
+    {
+      id: '1',
+      avatar: 'https://img.gazeta.ru/files3/221/12383221/Depositphotos_39437561_l-2015-pic905-895x505-41961.jpg',
+      url: 'https://img.gazeta.ru/files3/221/12383221/Depositphotos_39437561_l-2015-pic905-895x505-41961.jpg',
+      message: 'test message',
+      comments: []
+    }
+  ];
 
   if (posts) {
     return (
@@ -28,9 +36,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect([
-    { collection: 'kekstagram-posts' }
-  ])
-)(Main);
+// export default compose(
+//   connect(mapStateToProps),
+//   firestoreConnect([
+//     { collection: 'kekstagram-posts' }
+//   ])
+// )(Main);
+
+export default connect(mapStateToProps)(Main);
