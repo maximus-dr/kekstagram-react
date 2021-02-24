@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./components/Main/Main";
 import Navbar from "./components/Navbar/Navbar";
 import Post from './components/Main/Post/Post';
+import SignUp from './components/Navbar/Auth/SignUp/SignUp';
 
 
 function App() {
@@ -9,10 +10,10 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        <Main />
-
         <Switch>
-          <Route path="/post/:id" component={Post}></Route>
+          <Route exact path="/" component={Main} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/post/:id" component={Post} />
         </Switch>
       </div>
     </Router>
