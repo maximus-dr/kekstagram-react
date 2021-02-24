@@ -1,12 +1,14 @@
 import { firestoreReducer } from 'redux-firestore';
-import postReducer from './postReducer';
+import authReducer from './authReducer';
+import postReducer from './postsReducer';
 
 
 const { combineReducers } = require("redux");
 
 const rootReducer = combineReducers({
   firestore: firestoreReducer,
-  post: postReducer
+  posts: postReducer,
+  auth: authReducer
 });
 
 export default rootReducer;

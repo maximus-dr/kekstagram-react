@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Main from "./components/Main/Main";
-import Navbar from "./components/Navbar/Navbar";
-import Post from './components/Main/Post/Post';
+import Main from "./components/Main/Main/Main";
+import Navbar from "./components/Navbar/Navbar/Navbar";
+import Post from './components/Main/Post/Post/Post';
 import SignUp from './components/Navbar/Auth/SignUp/SignUp';
 
 
