@@ -6,71 +6,62 @@
   line-height: 0;
   overflow: hidden;
   cursor: pointer;
-}
 
-.post-link__img {
-  position: absolute;
-  width: auto;
-  min-height: 182px;
-}
+  &__img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    min-height: 182px;
+  }
 
-.post-link__stats {
-  display: none;
+  &__stats {
+    display: none;
+    margin: 0;
+    padding: 15px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    transform: translateX(-50%);
+  }
 
-  margin: 0;
-  padding: 15px;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
+  &:hover .post-link__stats,
+  &:focus .post-link__stats {
+    display: flex;
+  }
 
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 5px;
+  &__stat {
+    padding-left: 30px;
+    position: relative;
+    font-family: "Open Sans", "Arial", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
 
-  -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
+    &::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: -7px;
+      background-image: url("../../../../assets/img/sprite.svg");
+      background-size: 100%;
+    }
 
-.post-link:hover .post-link__stats,
-.post-link:focus .post-link__stats {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
+    &--comments {
+      margin-right: 10px;
+    }
 
-.post-link__stat {
-  padding-left: 30px;
-  position: relative;
+    &--comments::before {
+      width: 20px;
+      height: 16px;
+      background-position: 0 -59px;
+    }
 
-  font-family: "Open Sans", "Arial", sans-serif;
-  font-weight: 400;
-  color: #ffffff;
-}
-
-.post-link__stat--comments {
-  margin-right: 10px;
-}
-
-.post-link__stat::before {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: -7px;
-
-  background-image: url("../../../../assets/img/sprite.svg");
-  background-size: 100%;
-}
-
-.post-link__stat--comments::before {
-  width: 20px;
-  height: 16px;
-
-  background-position: 0 -59px;
-}
-
-.post-link__stat--likes::before {
-  width: 20px;
-  height: 16px;
-
-  background-position: 0 -88px;
+    &--likes::before {
+      width: 20px;
+      height: 16px;
+      background-position: 0 -88px;
+    }
+  }
 }
