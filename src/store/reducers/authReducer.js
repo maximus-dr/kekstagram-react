@@ -1,6 +1,8 @@
 const initialState = {
   currentUser: null,
   error: null,
+  signupError: null,
+  loginError: null,
   status: 'idle'
 }
 
@@ -18,7 +20,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         currentUser: action.user,
         status: 'success',
-        error: null
+        signupError: null
       };
     case 'SIGN_UP_FINISHED':
       return {
@@ -28,7 +30,7 @@ const authReducer = (state = initialState, action) => {
     case 'SIGN_UP_FAILURE':
       return {
         ...state,
-        error: action.error
+        signupError: action.error
       }
     case 'LOGIN_SUCCESS':
       console.log('success');
@@ -36,7 +38,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         currentUser: action.user,
         status: 'success',
-        error: null
+        loginError: null
       }
     case 'LOGIN_FINISHED':
       return {
@@ -46,7 +48,7 @@ const authReducer = (state = initialState, action) => {
     case 'LOGIN_FAILURE':
       return {
         ...state,
-        error: action.error
+        loginError: action.error
       }
     case 'LOGOUT':
       return {

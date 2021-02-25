@@ -14,7 +14,7 @@ export default function Login() {
   const onPasswordChange = e => setPassword(e.target.value);
   const dispatch = useDispatch();
   const history = useHistory();
-  const authError = useSelector(state => state.auth.error);
+  const authError = useSelector(state => state.auth.loginError);
   const loadingStatus = useSelector(state => state.auth.status);
 
   const onSubmit = e => {
@@ -59,7 +59,7 @@ export default function Login() {
           <button type="submit">
             {
               loadingStatus === 'loading'
-                ? 'Loading'
+                ? 'Loading...'
                 : 'Log In'
             }
           </button>

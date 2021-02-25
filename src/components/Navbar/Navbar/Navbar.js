@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 export default function Navbar({ isLoggedIn }) {
 
   const dispatch = useDispatch();
+  const onLogout = () => dispatch(logout());
 
   return (
     <div className="navbar container">
@@ -19,7 +20,7 @@ export default function Navbar({ isLoggedIn }) {
       <div>
         {
           isLoggedIn
-            ? <button onClick={() => dispatch(logout())}>Logout</button>
+            ? <button onClick={onLogout}>Logout</button>
             : <div>
               <Link to="signup" className="navbar__auth-link">Sign Up</Link>
               <Link to="login" className="navbar__auth-link">Log In</Link>

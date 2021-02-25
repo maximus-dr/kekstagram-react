@@ -16,9 +16,10 @@ export default function SignUp() {
   const onEmailChange = e => setEmail(e.target.value);
   const onPasswordChange = e => setPassword(e.target.value);
   const onPasswordConfirmChange = e => setPasswordConfirm(e.target.value);
+  
   const dispatch = useDispatch();
   const history = useHistory();
-  const authError = useSelector(state => state.auth.error);
+  const authError = useSelector(state => state.auth.signupError);
   const loadingStatus = useSelector(state => state.auth.status);
 
   const onSubmit = e => {
@@ -79,7 +80,11 @@ export default function SignUp() {
           />
 
           <button type="submit">
-            Sign Up
+            {
+              loadingStatus === 'loading'
+                ? 'Loading...'
+                : 'Sign Up'
+            }
           </button>
         </form>
 
