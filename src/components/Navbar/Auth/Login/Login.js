@@ -2,20 +2,23 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import s from './Login.module.scss';
+import { login } from '../../../../store/actions/authActions';
+import { auth } from './../../../../firebase/config';
 
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
 
 
   const onEmailChange = e => setEmail(e.target.value);
   const onPasswordChange = e => setPassword(e.target.value);
   const dispatch = useDispatch();
+  
 
   const onSubmit = e => {
     e.preventDefault();
+    dispatch(login(email, password));
 
     setEmail('');
     setPassword('');
@@ -26,7 +29,7 @@ export default function Login() {
     <section className={s.login}>
       <div>
         <h2>Log In</h2>
-        {error && <div>{error}</div>}
+        {auth.error && <div>{auth.error.message}</div>}
 
         <form onSubmit={onSubmit}>
           <label htmlFor="email">Email:</label>
