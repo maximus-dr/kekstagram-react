@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
+import { logout } from './../../../store/actions/authActions';
+import { useDispatch } from 'react-redux';
 
-export default function Navbar() {
+export default function Navbar({ isLoggedIn }) {
+
+  const dispatch = useDispatch();
+
   return (
     <div className="navbar container">
       <div className="navbar__buttons">
@@ -12,8 +17,14 @@ export default function Navbar() {
       </div>
 
       <div>
-        <Link to="signup" className="navbar__auth-link">Sign Up</Link>
-        <Link to="login" className="navbar__auth-link">Log In</Link>
+        {
+          isLoggedIn
+            ? <button onClick={() => dispatch(logout())}>Logout</button>
+            : <div>
+              <Link to="signup" className="navbar__auth-link">Sign Up</Link>
+              <Link to="login" className="navbar__auth-link">Log In</Link>
+            </div>
+        } 
       </div>
     </div>
   )

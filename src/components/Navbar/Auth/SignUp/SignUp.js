@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import s from './SignUp.module.scss';
 import { signUp } from './../../../../store/actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,7 +17,9 @@ export default function SignUp() {
   const onPasswordChange = e => setPassword(e.target.value);
   const onPasswordConfirmChange = e => setPasswordConfirm(e.target.value);
   const dispatch = useDispatch();
+  const history = useHistory();
   const authError = useSelector(state => state.auth.error);
+  const loadingStatus = useSelector(state => state.auth.status);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -27,12 +29,17 @@ export default function SignUp() {
     }
 
     dispatch(signUp(email, password));
-    
-    setEmail('');
-    setPassword('');
-    setPasswordConfirm('');
-    setConfirmError(null);
   };
+  
+  useEffect(() => {
+    if (loadingStatus === 'success') {
+      setEmail('');
+      setPassword('');
+      setPasswordConfirm('');
+      setConfirmError(null);
+      history.push('/');
+    }
+  }, [loadingStatus, history]);
 
 
   return (

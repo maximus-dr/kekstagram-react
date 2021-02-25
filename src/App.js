@@ -4,13 +4,23 @@ import Navbar from "./components/Navbar/Navbar/Navbar";
 import Post from './components/Main/Post/Post/Post';
 import SignUp from './components/Navbar/Auth/SignUp/SignUp';
 import Login from './components/Navbar/Auth/Login/Login';
+import { useState } from "react";
+import { auth } from './firebase/config';
 
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  auth.onAuthStateChanged(user => {
+    user ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  });
+
+
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/signup" component={SignUp} />

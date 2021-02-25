@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './Login.module.scss';
 import { login } from '../../../../store/actions/authActions';
-import { auth } from './../../../../firebase/config';
 
 
 export default function Login() {
@@ -14,22 +13,29 @@ export default function Login() {
   const onEmailChange = e => setEmail(e.target.value);
   const onPasswordChange = e => setPassword(e.target.value);
   const dispatch = useDispatch();
-  
+  const history = useHistory();
+  const authError = useSelector(state => state.auth.error);
+  const loadingStatus = useSelector(state => state.auth.status);
 
   const onSubmit = e => {
     e.preventDefault();
     dispatch(login(email, password));
-
-    setEmail('');
-    setPassword('');
   };
+
+  useEffect(() => {
+    if (loadingStatus === 'success') {
+      setEmail('');
+      setPassword('');
+      history.push('/');
+    }
+  }, [loadingStatus, history]);
 
 
   return (
     <section className={s.login}>
       <div>
         <h2>Log In</h2>
-        {auth.error && <div>{auth.error.message}</div>}
+        {authError && <div>{authError.message}</div>}
 
         <form onSubmit={onSubmit}>
           <label htmlFor="email">Email:</label>
@@ -51,7 +57,11 @@ export default function Login() {
           />
 
           <button type="submit">
-            Log In
+            {
+              loadingStatus === 'loading'
+                ? 'Loading'
+                : 'Log In'
+            }
           </button>
         </form>
 
