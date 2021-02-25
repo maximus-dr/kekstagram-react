@@ -2,11 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.scss';
 import { logout } from './../../../store/actions/authActions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function Navbar({ isLoggedIn }) {
+
+export default function Navbar() {
 
   const dispatch = useDispatch();
+  const auth = useSelector(state => state.firebase.auth);
+  const isLoggedIn = Boolean(auth.uid);
+
   const onLogout = () => dispatch(logout());
 
   return (

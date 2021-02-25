@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBqa0MN0vLkK_hJvDqoaUfAbPvHG97pcbE",
   authDomain: "kekstagram-2741a.firebaseapp.com",
   projectId: "kekstagram-2741a",

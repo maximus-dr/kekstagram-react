@@ -9,19 +9,21 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
-  const onEmailChange = e => setEmail(e.target.value);
-  const onPasswordChange = e => setPassword(e.target.value);
   const dispatch = useDispatch();
   const history = useHistory();
   const authError = useSelector(state => state.auth.loginError);
   const loadingStatus = useSelector(state => state.auth.status);
+
+  const onEmailChange = e => setEmail(e.target.value);
+  const onPasswordChange = e => setPassword(e.target.value);
 
   const onSubmit = e => {
     e.preventDefault();
     dispatch(login(email, password));
   };
 
+  // Clear input fields in case of success
+  // Redirect to main page
   useEffect(() => {
     if (loadingStatus === 'success') {
       setEmail('');
@@ -30,6 +32,12 @@ export default function Login() {
     }
   }, [loadingStatus, history]);
 
+  // Clean up error warning bu unmounting
+  useEffect(() => {
+    if (loadingStatus === 'error') {
+      return () => dispatch({ type: 'CLEANUP_LOGIN_ERROR'});
+    }
+  });
 
   return (
     <section className={s.login}>

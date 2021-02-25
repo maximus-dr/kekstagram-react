@@ -10,11 +10,12 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'AUTH_STARTED':
-      console.log('auth started');
       return {
         ...state,
         status: 'loading'
       }
+
+    // SIGN UP
     case 'SIGN_UP_SUCCESS':
       return {
         ...state,
@@ -30,10 +31,18 @@ const authReducer = (state = initialState, action) => {
     case 'SIGN_UP_FAILURE':
       return {
         ...state,
-        signupError: action.error
+        signupError: action.error,
+        status: 'error'
       }
+    case 'CLEANUP_SIGN_UP_ERROR':
+      return {
+        ...state,
+        signupError: null,
+        status: 'idle'
+      }
+
+    // LOGIN
     case 'LOGIN_SUCCESS':
-      console.log('success');
       return {
         ...state,
         currentUser: action.user,
@@ -48,8 +57,17 @@ const authReducer = (state = initialState, action) => {
     case 'LOGIN_FAILURE':
       return {
         ...state,
-        loginError: action.error
+        loginError: action.error,
+        status: 'error'
       }
+    case 'CLEANUP_LOGIN_ERROR':
+      return {
+        ...state,
+        status: 'idle',
+        loginError: null
+      }
+
+    // LOGOUT
     case 'LOGOUT':
       return {
         ...state,
@@ -59,7 +77,8 @@ const authReducer = (state = initialState, action) => {
     case 'LOGOUT_FAILURE':
       return {
         ...state,
-        error: action.error
+        error: action.error,
+        status: 'idle'
       }
     default:
       return state;
