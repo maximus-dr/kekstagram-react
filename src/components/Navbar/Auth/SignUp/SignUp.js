@@ -10,21 +10,30 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [confirmError, setConfirmError] = useState(null);
+  const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
   const history = useHistory();
   const authError = useSelector(state => state.auth.signupError);
   const loadingStatus = useSelector(state => state.auth.status);
 
-  const onEmailChange = e => setEmail(e.target.value);
-  const onPasswordChange = e => setPassword(e.target.value);
-  const onPasswordConfirmChange = e => setPasswordConfirm(e.target.value);
+  const onEmailChange = e => {
+    setEmail(e.target.value);
+    setError(null);
+  };
+  const onPasswordChange = e => {
+    setPassword(e.target.value);
+    setError(null);
+  };
+  const onPasswordConfirmChange = e => {
+    setPasswordConfirm(e.target.value);
+    setError(null);
+  };
 
   const onSubmit = e => {
     e.preventDefault();
     if (password !== passwordConfirm) {
-      return setConfirmError('Passwords do not match');
+      return setError('Passwords do not match');
     }
     dispatch(signUp(email, password));
   };
@@ -36,7 +45,7 @@ export default function SignUp() {
       setEmail('');
       setPassword('');
       setPasswordConfirm('');
-      setConfirmError(null);
+      setError(null);
       history.push('/');
     }
   }, [loadingStatus, history]);
@@ -46,14 +55,14 @@ export default function SignUp() {
     if (loadingStatus === 'error') {
       return () => dispatch({ type: 'CLEANUP_SIGN_UP_ERROR' });
     }
-  })
+  });
 
 
   return (
     <section className={s.signup}>
       <div>
         <h2>Sign Up</h2>
-        {confirmError && <div>{confirmError}</div>}
+        {error && <div>{error}</div>}
         {authError && <div>{authError.message}</div>}
 
 
