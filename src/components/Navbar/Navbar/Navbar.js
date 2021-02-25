@@ -12,7 +12,8 @@ export default function Navbar() {
       </div>
 
       <div>
-        <Link to="signup">Sign Up</Link>
+        <Link to="signup" className="navbar__auth-link">Sign Up</Link>
+        <Link to="login" className="navbar__auth-link">Log In</Link>
       </div>
     </div>
   )
