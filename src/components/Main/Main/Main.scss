@@ -1,5 +1,24 @@
 .main {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  width: 600px;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1023px) and (max-width: 1359px) {
+  .main {
+    grid-template-columns: repeat(5, 1fr);
+    width: 980px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .main {
+    grid-template-columns: repeat(7,1fr);
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
 }

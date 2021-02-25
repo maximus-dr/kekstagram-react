@@ -21,7 +21,7 @@ export default function Navbar() {
         <button className="navbar__button">Обсуждаемые</button>
       </div>
 
-      <div>
+      <div className="navbar__auth-links">
         {
           isLoggedIn
             ? <button onClick={onLogout}>Logout</button>

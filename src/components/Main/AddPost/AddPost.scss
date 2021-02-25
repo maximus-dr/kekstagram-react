@@ -1,11 +1,8 @@
-.add-post {
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 3;
-  grid-column: 3 / span 3;
 
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 3;
+.add-post {
+  grid-column: 1 / span 3;
   grid-row: 1 / span 3;
+  margin: 0 auto;
   
   &__form {
     position: relative;
@@ -65,5 +62,19 @@
       filter: drop-shadow(0 0 10px #622104);
       transform: scale(1.1);
     }
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1359px) {
+  .add-post {
+    grid-column: 2 / span 3;
+    grid-row: 1 / span 3;
+  }
+}
+
+@media (min-width: 1360px) {
+  .add-post {
+    grid-column: 3 / span 3;
+    grid-row: 1 / span 3;
   }
 }
