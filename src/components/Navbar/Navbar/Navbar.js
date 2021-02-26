@@ -16,19 +16,30 @@ export default function Navbar() {
   return (
     <div className="navbar container">
       <div className="navbar__buttons">
-        <button className="navbar__button navbar__button--active">Популярные</button>
-        <button className="navbar__button">Новые</button>
-        <button className="navbar__button">Обсуждаемые</button>
+        <button name="popular" className="navbar__button">
+          Популярные
+        </button>
+        <button name="new" className="navbar__button">
+          Новые
+        </button>
+        <button name="discussed" className="navbar__button">
+          Обсуждаемые
+        </button>
       </div>
 
       <div className="navbar__auth-links">
         {
           isLoggedIn
-            ? <button onClick={onLogout}>Logout</button>
-            : <div>
+            ? <Link 
+                to="/" 
+                className="navbar__auth-link" 
+                onClick={onLogout} >
+                  Logout
+              </Link>
+            : <>
               <Link to="signup" className="navbar__auth-link">Sign Up</Link>
               <Link to="login" className="navbar__auth-link">Log In</Link>
-            </div>
+            </>
         } 
       </div>
     </div>

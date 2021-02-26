@@ -14,6 +14,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Main} />
+          <Route path="/new" component={Main} />
+          <Route path="/discussed" component={Main} />
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/post/:id" component={Post} />
