@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Navbar.scss';
 import { logout } from './../../../store/actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
+import NavButtons from '../NavButtons/NavButtons';
 
 
 export default function Navbar() {
@@ -12,20 +13,12 @@ export default function Navbar() {
   const isLoggedIn = Boolean(auth.uid);
 
   const onLogout = () => dispatch(logout());
+  
 
   return (
     <div className="navbar container">
-      <div className="navbar__buttons">
-        <button name="popular" className="navbar__button">
-          Популярные
-        </button>
-        <button name="new" className="navbar__button">
-          Новые
-        </button>
-        <button name="discussed" className="navbar__button">
-          Обсуждаемые
-        </button>
-      </div>
+      
+      <NavButtons />
 
       <div className="navbar__auth-links">
         {

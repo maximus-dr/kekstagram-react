@@ -16,7 +16,7 @@
   }
 
   &__button {
-    padding: 6px 13px;
+    padding: 5px 15px;
     margin-right: 5px;
     font-family: "Open Sans", "Arial", sans-serif;
     font-weight: 700;
@@ -33,9 +33,8 @@
       color: #ff4e4e;   
       background-color: #ffffff;
       border-radius: 2px;
-      box-shadow: 0 0 0 2px #000000, 
-                  0 0 0 3px #ffffff;
-      border-radius: 2px;
+      box-shadow: 0 0 0 1px #000000, 
+                  0 0 0 2px #ffffff;
     }
   }
 
