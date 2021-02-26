@@ -42,7 +42,13 @@ export default function   PostSocial({ post }) {
       setCommentsShown(commentsList.length);
       setOverLimit(false);
     }
-  } 
+  }
+
+  const onHideComments = () => {
+    setComments(comments.slice(0, limit));
+    setCommentsShown(limit);
+    setOverLimit(true);
+  }
 
 
   return (
@@ -54,6 +60,13 @@ export default function   PostSocial({ post }) {
         overLimit &&
         <button className="social__loadmore" onClick={onLoadMore}>
           Загрузить еще
+        </button>
+      }
+      {
+        commentsCount > limit &&
+        commentsShown === commentsCount &&
+        <button className="social__hide-comments" onClick={onHideComments}>
+          Свернуть
         </button>
       }
       <AddComment />
