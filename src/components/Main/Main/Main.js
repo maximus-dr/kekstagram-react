@@ -1,29 +1,27 @@
 import React from 'react';
 import AddPost from '../AddPost/AddPost';
 import './Main.scss';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import PostList from '../PostList/PostList';
 
 
-function Main(props) {
+function Main({ posts }) {
 
-  const posts = useSelector(state => state.posts.list);
-
-  if (posts) {
-    return (
-      <div className="main container">
-        <PostList posts={posts} />
-        <AddPost />
-      </div>
-    );
-  } else {
+  if (!posts) {
     return <div>LOADING POSTS...</div>
   }
+
+  return (
+    <div className="main container">
+      <PostList posts={posts} />
+      <AddPost />
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.firestore.ordered['kekstagram-posts']
+    posts: state.posts
   }
 }
 

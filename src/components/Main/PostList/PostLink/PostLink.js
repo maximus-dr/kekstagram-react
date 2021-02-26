@@ -7,13 +7,15 @@ import Modal from '../../../Modal/Modal';
 import Post from '../../Post/Post/Post';
 
 
-function PostLink({ post, currentPost, openPost }) {
-
+function PostLink({ postId, posts, currentPost }) {
+  
+  const post = posts[postId];
   const dispatch = useDispatch();
   const history = useHistory();
+  
 
   const onLinkClick = () => {
-    openPost({...post});
+    dispatch(openPost(post));
   }
 
   const onModalClose = () => {
@@ -21,9 +23,11 @@ function PostLink({ post, currentPost, openPost }) {
     history.push('/');
   }
 
+  if (!post) return null;
+
   return (
     <>
-      <Link to={`/post/${post.id}`} className="post-link" onClick={onLinkClick}> 
+      <Link to={`/post/${postId}`} className="post-link" onClick={onLinkClick}> 
         <img className="post-link__img" src={post.url} alt="post" width="182" height="182" />
         <p className="post-link__stats">
           <span className="post-link__stat post-link__stat--comments">
@@ -44,14 +48,9 @@ function PostLink({ post, currentPost, openPost }) {
 
 const mapStateToProps = state => {
   return {
-    currentPost: state.posts.current
+    currentPost: state.posts.current,
+    posts: state.posts.list
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    openPost: (post) => dispatch(openPost(post))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostLink);
+export default connect(mapStateToProps)(PostLink);

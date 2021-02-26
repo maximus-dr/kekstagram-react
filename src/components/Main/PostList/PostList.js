@@ -1,12 +1,16 @@
-import React from 'react'
-import PostLink from './PostLink/PostLink'
+import React from 'react';
+import PostLink from './PostLink/PostLink';
 
-export default function PostList({posts}) {
+
+export default function PostList({ posts }) {
+
   return (
     <>
-      {posts && posts.map(post => (
-        <PostLink post={post} key={post.id} />
-      ))}
+      {
+        posts.ids && posts.ids.map(id => (
+          <PostLink key={id} postId={id} />
+        ))
+      }
     </>
   )
 }

@@ -1,10 +1,13 @@
 const initialState = {
-  list: [
-    {
+  current: null,
+  ids: ['1'],
+  list: {
+    '1': {
       id: '1',
       avatar: 'https://img.gazeta.ru/files3/221/12383221/Depositphotos_39437561_l-2015-pic905-895x505-41961.jpg',
       url: 'https://img.gazeta.ru/files3/221/12383221/Depositphotos_39437561_l-2015-pic905-895x505-41961.jpg',
       message: 'test message',
+      likes: 13,
       comments: [
         
         {
@@ -75,8 +78,7 @@ const initialState = {
       ],
       description: 'Летний чил на югах. #тай #отдых #лето #чил #travel #travelgram #summergram #chill'
     }
-  ],
-  current: null
+  }
 };
 
 
