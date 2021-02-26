@@ -1,12 +1,10 @@
 import React from 'react'
 
-export default function Comments({ comments, limit }) {
+export default function Comments({ comments }) {
 
   const commentsList = comments.map(comment => {
-    let key = Math.random();
-
     return (
-      <li className="social__comment" key={key}>
+      <li className="social__comment" key={comment.id}>
         <div className="social__comment-img">
           <img src={comment.avatar} alt="avatar" height="35" />
         </div>
@@ -21,16 +19,9 @@ export default function Comments({ comments, limit }) {
   return (
     <>
       <ul className="social__comments">
-        {
-          comments.length >= limit
-            ? commentsList.slice(0, limit)
-            : commentsList
-        }
+        {commentsList}
       </ul>
-      {
-        comments.length > limit 
-        && <button className="social__loadmore">Загрузить еще</button>
-      }
+      
     </>  
   )
 }

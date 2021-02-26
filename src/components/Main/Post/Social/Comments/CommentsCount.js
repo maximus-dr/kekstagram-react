@@ -1,20 +1,15 @@
 import React from 'react'
 
-export default function CommentsCount({ comments, limit }) {
-
-  const commentsShown = comments.length >= limit
-    ? limit
-    : comments.length;
-  const commentsCount = comments.length;
+export default function CommentsCount({ shown, total }) {
 
   return (
     <div className="social__comment-count">
       <span className="comments-count-shown">
-        {commentsShown}
+        {shown}
       </span>
       <span> из </span>
       <span className="comments-count">
-        {commentsCount}
+        {total}
       </span>
       <span> комментариев </span>
     </div>
