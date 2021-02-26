@@ -4,12 +4,16 @@
   background-color: #ffffff;
 
   &__img {
+    position: relative;
     width: 600px;
     height: 600px;
     overflow: hidden;
   }
 
   &__img img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     height: 600px;
     width: auto;
   }

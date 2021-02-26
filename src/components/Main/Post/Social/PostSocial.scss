@@ -16,15 +16,25 @@
   }
 
   &__img {
+    position: relative;
     width: 35px;
     height: 35px;
     border-radius: 50%;
     margin-right: 15px;
+    overflow: hidden;
+
+    & img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &__caption {
     margin: 0;
     margin-right: 15px;
+    padding: 0;
+    width: 400px;
   }
 
   &__likes {
@@ -82,7 +92,6 @@
 
   &__comment {
     padding-left: 15px;
-    padding-right: 15px;
     padding-bottom: 20px;
     display: flex;
     align-items: center;
@@ -95,36 +104,41 @@
   }
 
   &__comment-img {
+    position: relative;
     width: 35px;
     height: 35px;
     margin-right: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    & img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &__comment-text {
     margin: 0;
+    width: 500px;
   }
 
   &__loadmore {
-    padding: 0;
-    padding-left: 65px;
-    padding-bottom: 20px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 120px;
+    padding: 5px;
     position: relative;
-    text-align: left;
+    text-align: center;
     color: #3b77c0;
     background: none;
     border: none;
+    outline: none;
     cursor: pointer;
-  }
 
-  &__loadmore--active::after,
-  &__loadmore:active::after {
-    content: "";
-    position: absolute;
-    left: 180px;
-    right: 0;
-    width: 23px;
-    height: 23px;
-    background-image: url("../../../../assets/img/spinner-blue.svg");
+    &:active {
+      transform: translateY(2px);
+    }
   }
 
   &__footer {
@@ -152,6 +166,7 @@
     opacity: 0.6;
     transform: translateY(-50%);
     border: none;
+    outline: none;
     cursor: pointer;
 
     &:hover,
@@ -160,8 +175,8 @@
     }
 
     &:active {
-      background-position: 0 -48px;
       opacity: 1;
+      transform: translateY(-45%);
     }
   }
 }

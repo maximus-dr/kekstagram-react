@@ -7,7 +7,10 @@ export default function Comments({ comments, limit }) {
 
     return (
       <li className="social__comment" key={key}>
-        <img src={comment.avatar} alt="avatar" width="35" height="35" className="social__comment-img"/>
+        <div className="social__comment-img">
+          <img src={comment.avatar} alt="avatar" height="35" />
+        </div>
+        
         <p className="social__comment-text">
           {comment.message}
         </p>
