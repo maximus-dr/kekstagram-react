@@ -1,0 +1,47 @@
+.modal {
+  z-index: 1000;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 10px;
+    cursor: pointer;
+    display: block;
+    padding: 0;
+    width: 42px;
+    height: 42px;
+    font-size: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-image: url("../../assets/img/icon-cross.svg");
+    background-position: 50%;
+    background-repeat: no-repeat;
+    border: 0;
+    border-radius: 2px;
+    opacity: 0.6;
+    outline: none;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+      opacity: 1;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
