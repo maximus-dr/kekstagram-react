@@ -3,8 +3,14 @@
   grid-column: 1 / span 3;
   grid-row: 1 / span 3;
   margin: 0 auto;
+
+  &__wrapper {
+    margin: 0 auto;
+    width: 582px;
+    text-align: center;
+  }
   
-  &__form {
+  &__field {
     position: relative;
     margin: 0;
     padding: 0;
@@ -13,11 +19,6 @@
     background-repeat: no-repeat;
     background-position: center;
     border: none;
-  }
-  &__wrapper {
-    margin: 0 auto;
-    width: 582px;
-    text-align: center;
   }
 
   &__fieldset {
@@ -65,7 +66,7 @@
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1359px) {
+@media (min-width: 1024px) {
   .add-post {
     grid-column: 2 / span 3;
     grid-row: 1 / span 3;
