@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import s from './SignUp.module.scss';
-import { signUp } from './../../../../store/actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
+import { signUp } from './../../../store/actions/authActions';
 
 
 export default function SignUp() {

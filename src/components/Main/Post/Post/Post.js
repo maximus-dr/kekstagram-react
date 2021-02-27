@@ -1,6 +1,6 @@
 import React from 'react'
 import './Post.scss';
-import PostSocial from '../Social/PostSocial';
+import PostSocial from '../PostSocial/PostSocial';
 import PostImage from '../PostImage';
 
 

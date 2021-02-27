@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './Login.module.scss';
-import { login } from '../../../../store/actions/authActions';
+import { login } from '../../../store/actions/authActions';
 
 
 export default function Login() {
