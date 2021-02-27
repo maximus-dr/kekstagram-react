@@ -5,12 +5,12 @@ import './NewPostScale.scss';
 export default function NewPostScale() {
 
   const DEFAULT_VALUE = 100;
-  const [rangeValue, setRangeValue] = useState(DEFAULT_VALUE);
+  const [scaleValue, setScaleValue] = useState(DEFAULT_VALUE);
 
   return (
     <div className="new-post__scale scale">
       <span className="scale__value">
-        {rangeValue} %
+        {scaleValue} %
       </span>
       <input 
         className="scale__line"
@@ -18,7 +18,7 @@ export default function NewPostScale() {
         min="0"
         max="100"
         step="1"
-        onChange={e => setRangeValue(e.target.value)}
+        onChange={e => setScaleValue(e.target.value)}
         defaultValue={`${DEFAULT_VALUE}`}
       />
     </div>
