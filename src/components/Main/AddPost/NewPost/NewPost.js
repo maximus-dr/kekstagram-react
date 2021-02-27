@@ -1,9 +1,14 @@
 import React from 'react';
 import './NewPost.scss';
 import preloader from '../../../../assets/img/loading.gif';
+import { connect } from 'react-redux';
 
 
-export default function NewPost() {
+function NewPost({ newPost }) {
+
+  const imgSrc = newPost.data ? newPost.imgSrc : preloader;
+
+  
   return (
     <section className="new-post">
       <div className="new-post__wrapper">
@@ -30,7 +35,7 @@ export default function NewPost() {
           </fieldset>
 
           <div className="new-post__preview">
-            <img src={preloader} alt="Предварительный просмотр фотографии" />
+            <img src={imgSrc} alt="Предварительный просмотр фотографии" />
 
             <fieldset className="new-post__scale scale">
               <input
@@ -109,10 +114,20 @@ export default function NewPost() {
             <textarea className="text__description" name="description" placeholder="Ваш комментарий..." maxLength="140"></textarea>
           </fieldset>
 
-          <button className="new-post__submit" type="submit">Submit</button>
+          <button className="new-post__submit" type="submit">
+            Опубликовать
+          </button>
         </form>
 
       </div>
     </section>
   )
 }
+
+const mapStateToProps = state => {
+  return {
+    newPost: state.newPost
+  }
+};
+
+export default connect(mapStateToProps)(NewPost);

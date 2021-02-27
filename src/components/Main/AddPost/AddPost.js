@@ -3,22 +3,27 @@ import Modal from '../../Modal/Modal';
 import './AddPost.scss';
 import NewPost from './NewPost/NewPost';
 import { connect, useDispatch } from 'react-redux';
-import { closeNewPost, openNewPost } from './../../../store/actions/newPostActions';
+import { closeNewPostForm, uploadNewPostFile } from './../../../store/actions/newPostActions';
 
 
 function AddPost({ newPost}) {
 
   const dispatch = useDispatch();
-  // const isOpen = Boolean(newPost.uploadImg);
-  const isOpen = true;
+  const openModal = Boolean(newPost.data);
 
-  const onFileAdd = e => {
-    const uploadImg = e.target.files[0];
-    dispatch(openNewPost(uploadImg));
+  const onFileUpload = e => {
+    const data = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(data);
+
+    reader.onload = () => {
+      const imgSrc = reader.result;
+      dispatch(uploadNewPostFile(data, imgSrc));
+    };
   }
 
   const onModalClose = () => {
-    dispatch(closeNewPost());
+    dispatch(closeNewPostForm());
   }
 
 
@@ -33,7 +38,7 @@ function AddPost({ newPost}) {
               className="add-post__input visually-hidden" 
               type="file" 
               id="add-file"
-              onChange={onFileAdd}
+              onChange={onFileUpload}
               required 
             />
 
@@ -42,7 +47,7 @@ function AddPost({ newPost}) {
             </label>
           </div>
 
-          <Modal isOpen={isOpen} close={onModalClose}>
+          <Modal isOpen={openModal} close={onModalClose}>
             <NewPost />
           </Modal>
           

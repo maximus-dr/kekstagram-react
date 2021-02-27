@@ -1,18 +1,22 @@
 const initialState = {
-  uploadImg: null
+  data: null,
+  imgSrc: null
 };
 
 const newPostReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'OPEN_NEW_POST_FORM':
+    case 'UPLOAD_NEW_POST_FILE': {
       return {
         ...state,
-        uploadImg: action.uploadImg
+        data: action.data,
+        imgSrc: action.imgSrc
       }
+    }
     case 'CLOSE_NEW_POST_FORM':
       return {
         ...state,
-        uploadImg: null
+        data: null,
+        imgSrc: null
       };
     default:
       return state
