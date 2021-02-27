@@ -20,18 +20,22 @@
   }
 
   &__preview {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 600px;
     height: 600px;
     background-color: #ffffff;
+    overflow: hidden;
   }
   
   &__preview img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: block;
-    max-width: 600px;
-    max-height: 600px;
+    height: 100%;
   }
   
   &__submit {

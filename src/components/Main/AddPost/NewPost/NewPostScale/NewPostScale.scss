@@ -1,0 +1,58 @@
+.scale {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 495px;
+  height: 33px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 33px;
+  box-shadow: 0 0 1px 0 #ffffff,
+              0 0 2px 0 #000000;
+
+
+  &__value {
+    position: relative;
+    display: inline-block;
+    top: -40px;
+    width: 62px;
+    padding: 8px;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    line-height: 16px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: default;
+    user-select: none;
+    border-radius: 33px;
+    box-shadow: 0 0 1px 0 #ffffff,
+                0 0 2px 0 #000000;
+  }
+
+  &__value:active,
+  &__value:focus {
+    outline: none;
+  }
+
+  &__line {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    width: 451px;
+    height: 5px;
+    font-size: 0;
+    background-color: rgba(255, 231, 81, 0.4);
+    transform: translate(-50%);
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+
+  &__level {
+    position: absolute;
+    width: 20%;
+    height: 100%;
+    background-color: #ffe753;
+  }
+}

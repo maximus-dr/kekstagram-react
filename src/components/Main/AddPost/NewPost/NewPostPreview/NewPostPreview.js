@@ -1,5 +1,5 @@
 import React from 'react'
-import NewPostScale from './NewPostScale'
+import NewPostScale from '../NewPostScale/NewPostScale'
 
 
 export default function NewPostPreview({ imgSrc }) {
