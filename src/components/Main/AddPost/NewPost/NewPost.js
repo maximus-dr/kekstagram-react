@@ -100,7 +100,16 @@ export default function NewPost() {
             </ul>
           </fieldset>
 
-          <button type="submit">Submit</button>
+          <fieldset className="new-post__text text">
+            <label className="text__hashtags-label" htmlFor="hashtags">
+              <div className="text__validation-message">Текст</div>
+              <input className="text__hashtags" type="text" id="hashtags" name="hashtags" placeholder="#хэш-тег" minLength="2" maxLength="104" />
+            </label>
+
+            <textarea className="text__description" name="description" placeholder="Ваш комментарий..." maxLength="140"></textarea>
+          </fieldset>
+
+          <button className="new-post__submit" type="submit">Submit</button>
         </form>
 
       </div>
