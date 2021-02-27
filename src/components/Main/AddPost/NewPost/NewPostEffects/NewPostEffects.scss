@@ -1,0 +1,84 @@
+.effects {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+  border: none;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+  }
+  
+  &__item {
+    margin-right: 5px;
+  }
+  
+  &__label {
+    font-family: "Open Sans", "Arial", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  &__label:hover,
+  &__label:focus,
+  &__radio:checked + &__label {
+    color: #ffe753;
+  }
+  
+  &__preview {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    font-size: 0;
+    background-color: #314359;
+    background-image: url("../../../../../assets/img/upload-default-image.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+    border: solid 5px transparent;
+    border-radius: 5px;
+  }
+  
+  &__preview:last-of-type {
+    margin-right: 0;
+  }
+  
+  &__radio:checked + .effects__label .effects__preview {
+    border: 5px solid #ffe753;
+  }
+  
+  &__radio:focus + .effects__label .effects__preview,
+  &__radio:checked + .effects__label .effects__preview {
+    outline: auto 5px highlight;
+  }
+  
+  &__preview--chrome {
+    filter: grayscale(1);
+  }
+  
+  &__preview--sepia {
+    filter: sepia(1);
+  }
+  
+  &__preview--marvin {
+    filter: invert(100%);
+  }
+  
+  &__preview--phobos {
+    filter: blur(5px);
+  }
+  
+  &__preview--heat {
+    filter: brightness(3);
+  }
+}
+
+

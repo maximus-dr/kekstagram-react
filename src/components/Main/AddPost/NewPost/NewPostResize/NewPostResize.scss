@@ -1,0 +1,84 @@
+.resize {
+  margin: 0;
+  padding: 10px;
+  font-size: 0;
+  border: 0;
+
+  &__control {
+    position: relative;
+    width: 33px;
+    height: 33px;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 0;
+    outline: none;
+    user-select: none;
+  }
+  
+  &__control:hover,
+  &__control:focus {
+    opacity: 0.7;
+  }
+  
+  &__control:active {
+    transform: scale(0.9);
+  }
+  
+  &__control--minus {
+    border-radius: 50% 0 0 50%;
+  }
+  
+  &__control--minus:hover,
+  &__control--plus:hover {
+    cursor: pointer;
+  }
+  
+  &__control--minus::before {
+    content: "–";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    line-height: 0;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
+  }
+  
+  &__control--value {
+    width: 60px;
+    font-size: 16px;
+    color: #ffffff;
+    border: solid rgba(255, 255, 255, 0.5);
+    border-width: 0 2px;
+    user-select: none;
+  }
+  
+  &__control--value:hover,
+  &__control--value:active,
+  &__control--value:focus {
+    cursor: default;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: none;
+    outline: none;
+  }
+  
+  &__control--plus {
+    border-radius: 0 50% 50% 0;
+  }
+  
+  &__control--plus::before {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    line-height: 0;
+    color: #ffffff;
+    transform: translate(-50%, -50%);
+  }
+}
