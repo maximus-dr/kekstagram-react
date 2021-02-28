@@ -9,8 +9,7 @@ import { closeNewPostForm, uploadNewPostFile } from './../../../store/actions/ne
 function AddPost({ newPost}) {
 
   const dispatch = useDispatch();
-  // const openModal = Boolean(newPost.data);
-  const openModal = true;
+  const openModal = Boolean(newPost.data);
 
   const onFileUpload = e => {
     const data = e.target.files[0];

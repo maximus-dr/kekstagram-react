@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './NewPostScale.scss';
 
 
-export default function NewPostScale() {
+export default function NewPostScale({ showScale, scaleValue, onScaleChange }) {
 
-  const DEFAULT_VALUE = 100;
-  const [scaleValue, setScaleValue] = useState(DEFAULT_VALUE);
+  if (!showScale) return null;
 
   return (
     <div className="new-post__scale scale">
@@ -18,8 +17,8 @@ export default function NewPostScale() {
         min="0"
         max="100"
         step="1"
-        onChange={e => setScaleValue(e.target.value)}
-        defaultValue={`${DEFAULT_VALUE}`}
+        onChange={onScaleChange}
+        defaultValue={100}
       />
     </div>
   )

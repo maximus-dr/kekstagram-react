@@ -1,27 +1,37 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './NewPostEffects.scss';
 
 
-export default function NewPostEffects() {
+export default function NewPostEffects({ effects, onEffectToggle }) {
 
-  const effects = [
-    { name: 'none', title: 'Оригинал'},
-    { name: 'chrome', title: 'Хром'},
-    { name: 'sepia', title: 'Сепия'},
-    { name: 'marvin', title: 'Марвин'},
-    { name: 'phobos', title: 'Фобос'},
-    { name: 'heat', title: 'Зной'},
-  ];
+  const effectRef = useRef('');
 
-  const effectsList = effects.map(effect => {
+  // Set focus on 'none' effect by default
+  useEffect(() => {
+    effectRef.current.checked = true;
+    effectRef.current.focus();
+  }, []);
+
+  
+  const effectsList = Object.keys(effects).map(key => {
+
+    const isChecked = key === 'none' ? effectRef : null;
 
     return (
-      <li className="effects__item">
-        <input type="radio" className="effects__radio visually-hidden" name="effect" id={`effect-${effect.name}`} value="none" />
-        <label htmlFor={`effect-${effect.name}`} className="effects__label">
-          <span className={`effects__preview effects__preview--${effect.name}`}>
+      <li className="effects__item" key={key}>
+        <input
+          className="effects__radio visually-hidden" 
+          type="radio" 
+          name="effect" 
+          id={`effect-${key}`} 
+          value={key}
+          onClick={onEffectToggle}
+          ref={isChecked}
+        />
+        <label htmlFor={`effect-${key}`} className="effects__label">
+          <span className={`effects__preview effects__preview--${key}`}>
           </span>
-          {effect.title}
+          {key}
         </label>
       </li>
     );
