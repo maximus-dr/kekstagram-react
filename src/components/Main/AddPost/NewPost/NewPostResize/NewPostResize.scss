@@ -66,29 +66,33 @@
     border: solid rgba(255, 255, 255, 0.5);
     border-width: 0 2px;
     user-select: none;
-  }
-  
-  &__control--value:hover,
-  &__control--value:active,
-  &__control--value:focus {
     cursor: default;
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: none;
-    outline: none;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active,
+    &:focus {
+      cursor: default;
+      background-color: rgba(0, 0, 0, 0.5);
+      transform: none;
+      outline: none;
+    }
   }
   
   &__control--plus {
     border-radius: 0 50% 50% 0;
-  }
-  
-  &__control--plus::before {
-    content: "+";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 20px;
-    line-height: 0;
-    color: #ffffff;
-    transform: translate(-50%, -50%);
+
+    &::before {
+      content: "+";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 20px;
+      line-height: 0;
+      color: #ffffff;
+      transform: translate(-50%, -50%);
+    }
   }
 }

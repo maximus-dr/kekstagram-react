@@ -18,7 +18,7 @@ export default function NewPostScale({ showScale, scaleValue, onScaleChange }) {
         max="100"
         step="1"
         onChange={onScaleChange}
-        defaultValue={100}
+        value={scaleValue}
       />
     </div>
   )

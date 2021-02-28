@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import './NewPost.scss';
 import preloader from '../../../../assets/img/loading.gif';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import NewPostResize from './NewPostResize/NewPostResize';
 import NewPostPreview from './NewPostPreview/NewPostPreview';
 import NewPostEffects from './NewPostEffects/NewPostEffects';
 import NewPostText from './NewPostText/NewPostText';
+import { submitNewPost } from '../../../../store/actions/newPostActions';
+
 
 export const resize = {
   default: 100,
-  min: 75,
-  max: 125,
+  min: 50,
+  max: 150,
   step: 25,
 }
 
@@ -45,6 +47,7 @@ const effects = {
 
 function NewPost({ newPost }) {
 
+  const dispatch = useDispatch();
   const [currentEffect, setCurrentEffect] = useState(effects.none);
 
   const onEffectToggle = e => {
@@ -91,10 +94,14 @@ function NewPost({ newPost }) {
 
   const onResize = e => {
     e.preventDefault();
-    console.log(e.target.value);
     e.target.name === 'plus'
       ? setImgSize(prev => prev + resize.step)
       : setImgSize(prev => prev - resize.step);
+  }
+  
+  const onSubmit = e => {
+    e.preventDefault();
+    dispatch(submitNewPost(newPost));
   }
   
 
@@ -102,7 +109,7 @@ function NewPost({ newPost }) {
     <section className="new-post">
       <div className="new-post__wrapper">
 
-        <form className="new-post__form">
+        <form className="new-post__form" onSubmit={onSubmit}>
           <NewPostResize 
             onResize={onResize}
             resizeValue={imgSize}
