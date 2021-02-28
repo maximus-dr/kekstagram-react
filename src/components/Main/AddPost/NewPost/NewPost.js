@@ -7,36 +7,43 @@ import NewPostPreview from './NewPostPreview/NewPostPreview';
 import NewPostEffects from './NewPostEffects/NewPostEffects';
 import NewPostText from './NewPostText/NewPostText';
 
+export const resize = {
+  default: 100,
+  min: 75,
+  max: 125,
+  step: 25,
+}
+
+const effects = {
+  none: {
+    filter: 'none'
+  },
+  chrome: {
+    filter: 'grayscale',
+    max: 1
+  },
+  sepia: {
+    filter: 'sepia',
+    max: 1
+  },
+  marvin: {
+    filter: 'invert',
+    max: 100,
+    unit: '%'
+  },
+  phobos: {
+    filter: 'blur',
+    max: 3,
+    unit: 'px'
+  },
+  heat: {
+    filter: 'brightness',
+    max: 3
+  }
+};
+
 
 function NewPost({ newPost }) {
-
-  const effects = {
-    none: {
-      filter: 'none'
-    },
-    chrome: {
-      filter: 'grayscale',
-      max: 1
-    },
-    sepia: {
-      filter: 'sepia',
-      max: 1
-    },
-    marvin: {
-      filter: 'invert',
-      max: 100,
-      unit: '%'
-    },
-    phobos: {
-      filter: 'blur',
-      max: 3,
-      unit: 'px'
-    },
-    heat: {
-      filter: 'brightness',
-      max: 3
-    }
-  };
 
   const [currentEffect, setCurrentEffect] = useState(effects.none);
 
@@ -62,31 +69,54 @@ function NewPost({ newPost }) {
     return `${effect.filter}(${depth + unit})`
   }
 
+  const scaleImg = (value) => {
+    if (value === 100) return '';
+    return `translateX(-50%) scale(${value / 100})`;
+  }
+
   const [scaleValue, setScaleValue] = useState(100);
   const [showScale, setShowScale] = useState(false);
 
   const onScaleChange = e => setScaleValue(e.target.value);
 
+  const [imgSize, setImgSize] = useState(resize.default);
+
   const img = {
     src: newPost.data ? newPost.imgSrc : preloader,
     style: {
-      filter: setEffectDepth(currentEffect, scaleValue)
+      filter: setEffectDepth(currentEffect, scaleValue),
+      transform: scaleImg(imgSize)
     }
   }
+
+  const onResize = e => {
+    e.preventDefault();
+    console.log(e.target.value);
+    e.target.name === 'plus'
+      ? setImgSize(prev => prev + resize.step)
+      : setImgSize(prev => prev - resize.step);
+  }
+  
 
   return (
     <section className="new-post">
       <div className="new-post__wrapper">
 
         <form className="new-post__form">
-          <NewPostResize />
+          <NewPostResize 
+            onResize={onResize}
+            resizeValue={imgSize}
+          />
           <NewPostPreview 
             img={img}
             showScale={showScale}
             scaleValue={scaleValue} 
             onScaleChange={onScaleChange} 
           />
-          <NewPostEffects effects={effects} onEffectToggle={onEffectToggle} />
+          <NewPostEffects 
+            effects={effects} 
+            onEffectToggle={onEffectToggle} 
+          />
           <NewPostText />
         
           <button className="new-post__submit" type="submit">
