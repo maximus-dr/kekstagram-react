@@ -1,5 +1,5 @@
-export const uploadNewPostFile = (data, imgSrc) => {
-  return { type: 'UPLOAD_NEW_POST_FILE', data, imgSrc }
+export const uploadNewPostFile = (file, imgSrc) => {
+  return { type: 'UPLOAD_NEW_POST_FILE', file, imgSrc }
 }
 
 export const closeNewPostForm = () => {

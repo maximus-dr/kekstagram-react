@@ -1,5 +1,5 @@
 const initialState = {
-  data: null,
+  file: null,
   imgSrc: null
 };
 
@@ -8,14 +8,14 @@ const newPostReducer = (state = initialState, action) => {
     case 'UPLOAD_NEW_POST_FILE': {
       return {
         ...state,
-        data: action.data,
+        file: action.file,
         imgSrc: action.imgSrc
       }
     }
     case 'CLOSE_NEW_POST_FORM':
       return {
         ...state,
-        data: null,
+        file: null,
         imgSrc: null
       };
     default:

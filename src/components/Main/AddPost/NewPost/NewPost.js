@@ -82,7 +82,7 @@ function NewPost({ newPost }) {
   const [imgSize, setImgSize] = useState(resize.default);
 
   const img = {
-    src: newPost.data ? newPost.imgSrc : preloader,
+    src: newPost.file ? newPost.imgSrc : preloader,
     style: {
       filter: setEffectDepth(currentEffect, scaleValue),
       transform: scaleImg(imgSize)
