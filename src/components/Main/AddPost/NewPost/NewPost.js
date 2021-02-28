@@ -117,7 +117,9 @@ function NewPost({ newPost }) {
     dispatch(submitNewPost({
       ...newPost,
       description,
-      message
+      message,
+      avatar: 'https://img.gazeta.ru/files3/221/12383221/Depositphotos_39437561_l-2015-pic905-895x505-41961.jpg',
+      name: 'Max Ivanov'
     }));
   }
   

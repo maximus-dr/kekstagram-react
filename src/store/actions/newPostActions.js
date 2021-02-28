@@ -25,8 +25,8 @@ export const submitNewPost = (post) => {
           id,
           author: {
             id: nanoid(),
-            avatar: 'https://img.gazeta.ru/files3/221/12383221/Depositphotos_39437561_l-2015-pic905-895x505-41961.jpg',
-            name: 'Max Ivanov'
+            avatar: post.avatar,
+            name: post.name
           }, 
           img: {
             url: fileUrl
@@ -37,7 +37,9 @@ export const submitNewPost = (post) => {
             parseISO(new Date().toISOString()), { representation: 'date' }) 
         });
       })
-      .then(() => dispatch({ type: 'SUBMIT_NEW_POST_SUCCESS'}));
+      .then(() => dispatch({ type: 'SUBMIT_NEW_POST_SUCCESS'}))
+      .then(() => dispatch({ type: 'SUBMIT_NEW_POST_FINISH'}))
+      .catch(error => dispatch({ type: 'SUBMIT_NEW_POST_FAILURE', error }));
   }
 }
 

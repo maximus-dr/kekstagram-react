@@ -13,6 +13,11 @@ const newPostReducer = (state = initialState, action) => {
         imgSrc: action.imgSrc
       }
     }
+    case 'SUBMIT_NEW_POST_STARTED':
+      return {
+        ...state,
+        status: 'loading'
+      }
     case 'SUBMIT_NEW_POST_SUCCESS':
       console.log('success');
       return state;
