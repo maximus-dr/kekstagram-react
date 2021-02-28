@@ -99,9 +99,26 @@ function NewPost({ newPost }) {
       : setImgSize(prev => prev - resize.step);
   }
   
+  
+  const [description, setDescription] = useState('');
+  const [message, setMessage] = useState('');
+
+  const onDescriptionChange = e => {
+    setDescription(e.target.value);
+  }
+
+  const onMessageChange = e => {
+    setMessage(e.target.value);
+  }
+
+
   const onSubmit = e => {
     e.preventDefault();
-    dispatch(submitNewPost(newPost));
+    dispatch(submitNewPost({
+      ...newPost,
+      description,
+      message
+    }));
   }
   
 
@@ -124,7 +141,10 @@ function NewPost({ newPost }) {
             effects={effects} 
             onEffectToggle={onEffectToggle} 
           />
-          <NewPostText />
+          <NewPostText 
+            onDescriptionChange={onDescriptionChange}
+            onMessageChange={onMessageChange}
+          />
         
           <button className="new-post__submit" type="submit">
             Опубликовать

@@ -1,5 +1,6 @@
 import { parseISO } from 'date-fns';
-var formatISO = require('date-fns/formatISO')
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+
 
 const initialState = {
   current: null,
@@ -27,13 +28,13 @@ const initialState = {
             name: 'Stepan'
           },
           message: "Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце-концов это просто непрофессионально.",
-          createdAt: formatISO(
+          createdAt: formatDistanceToNow(
             parseISO(new Date().toISOString()), { representation: 'date' })
         },
   
       ],
       description: 'Летний чил на югах. #тай #отдых #лето #чил #travel #travelgram #summergram #chill',
-      createdAt: formatISO(
+      createdAt: formatDistanceToNow(
         parseISO(new Date().toISOString()), { representation: 'date' })
     }
   }

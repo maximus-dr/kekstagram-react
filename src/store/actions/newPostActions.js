@@ -2,8 +2,7 @@ import { storage } from "../../firebase/config";
 import { nanoid } from "nanoid";
 import { db } from './../../firebase/config';
 import { parseISO } from 'date-fns';
-var formatISO = require('date-fns/formatISO');
-
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 
 export const uploadNewPostFile = (file, imgSrc) => {
@@ -32,9 +31,9 @@ export const submitNewPost = (post) => {
           img: {
             url: fileUrl
           },
-          message: 'Test message',
-          description: 'Test description',
-          createdAt: formatISO(
+          message: post.message,
+          description: post.description,
+          createdAt: formatDistanceToNow(
             parseISO(new Date().toISOString()), { representation: 'date' }) 
         });
       })
