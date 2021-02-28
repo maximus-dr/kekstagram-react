@@ -7,6 +7,7 @@ import NewPostPreview from './NewPostPreview/NewPostPreview';
 import NewPostEffects from './NewPostEffects/NewPostEffects';
 import NewPostText from './NewPostText/NewPostText';
 import { submitNewPost } from '../../../../store/actions/newPostActions';
+import Loader from './../../../Modal/Loader/Loader';
 
 
 export const resize = {
@@ -121,40 +122,46 @@ function NewPost({ newPost }) {
       avatar: 'https://img.gazeta.ru/files3/221/12383221/Depositphotos_39437561_l-2015-pic905-895x505-41961.jpg',
       name: 'Max Ivanov'
     }));
+    const uploadInput = document.getElementById('add-file');
+    uploadInput.value = '';
   }
   
 
   return (
-    <section className="new-post">
-      <div className="new-post__wrapper">
+    <>
+      <Loader isOpen={newPost.status === 'loading'} />
 
-        <form className="new-post__form" onSubmit={onSubmit}>
-          <NewPostResize 
-            onResize={onResize}
-            resizeValue={imgSize}
-          />
-          <NewPostPreview 
-            img={img}
-            showScale={showScale}
-            scaleValue={scaleValue} 
-            onScaleChange={onScaleChange} 
-          />
-          <NewPostEffects 
-            effects={effects} 
-            onEffectToggle={onEffectToggle} 
-          />
-          <NewPostText 
-            onDescriptionChange={onDescriptionChange}
-            onMessageChange={onMessageChange}
-          />
-        
-          <button className="new-post__submit" type="submit">
-            Опубликовать
-          </button>
-        </form>
+      <section className="new-post">
+        <div className="new-post__wrapper">
 
-      </div>
-    </section>
+          <form className="new-post__form" onSubmit={onSubmit}>
+            <NewPostResize 
+              onResize={onResize}
+              resizeValue={imgSize}
+            />
+            <NewPostPreview 
+              img={img}
+              showScale={showScale}
+              scaleValue={scaleValue} 
+              onScaleChange={onScaleChange} 
+            />
+            <NewPostEffects 
+              effects={effects} 
+              onEffectToggle={onEffectToggle} 
+            />
+            <NewPostText 
+              onDescriptionChange={onDescriptionChange}
+              onMessageChange={onMessageChange}
+            />
+          
+            <button className="new-post__submit" type="submit">
+              Опубликовать
+            </button>
+          </form>
+
+        </div>
+      </section>
+    </>
   )
 }
 

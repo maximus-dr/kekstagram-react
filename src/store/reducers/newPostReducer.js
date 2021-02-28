@@ -1,7 +1,8 @@
 const initialState = {
   file: null,
   status: 'idle',
-  imgSrc: null
+  imgSrc: null,
+  error: null
 };
 
 const newPostReducer = (state = initialState, action) => {
@@ -20,7 +21,20 @@ const newPostReducer = (state = initialState, action) => {
       }
     case 'SUBMIT_NEW_POST_SUCCESS':
       console.log('success');
-      return state;
+      return {
+        ...state,
+        status: 'success'
+      };
+    case 'SUBMIT_NEW_POST_FINISH':
+      return {
+        ...state,
+        status: 'idle'
+      }
+    case 'SUBMIT_NEW_POST_FAILURE':
+      return {
+        ...state,
+        error: action.error
+      }
     case 'CLOSE_NEW_POST_FORM':
       return {
         ...state,

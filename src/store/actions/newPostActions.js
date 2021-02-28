@@ -38,7 +38,10 @@ export const submitNewPost = (post) => {
         });
       })
       .then(() => dispatch({ type: 'SUBMIT_NEW_POST_SUCCESS'}))
-      .then(() => dispatch({ type: 'SUBMIT_NEW_POST_FINISH'}))
+      .then(() => {
+        dispatch({ type: 'SUBMIT_NEW_POST_FINISH'});
+        dispatch(closeNewPostForm());
+      })
       .catch(error => dispatch({ type: 'SUBMIT_NEW_POST_FAILURE', error }));
   }
 }
