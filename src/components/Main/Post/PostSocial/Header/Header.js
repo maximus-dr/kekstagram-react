@@ -9,9 +9,12 @@ export default function Header({ post }) {
         <img src={post.author.avatar} alt="avatar" height="35" />
       </div>
 
-      <p className="social__caption">
-        {post.description}
-      </p>
+      <div className="social__caption">
+        <p>{post.description}</p>
+        <span className="social__created-at">
+          {post.createdAt}
+        </span>
+      </div>
 
       <p className="social__likes">
         <span>Нравится </span>

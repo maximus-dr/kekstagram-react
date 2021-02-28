@@ -9,9 +9,12 @@ export default function Comments({ comments }) {
           <img src={comment.author.avatar} alt="avatar" height="35" />
         </div>
         
-        <p className="social__comment-text">
-          {comment.message}
-        </p>
+        <div className="social__comment-text">
+          <p>{comment.message}</p>
+          <span className="social__created-at">
+            {comment.createdAt}
+          </span>
+        </div>
       </li>
     );
   })
