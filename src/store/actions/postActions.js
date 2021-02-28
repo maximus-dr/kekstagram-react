@@ -1,3 +1,32 @@
+export const postTemplate = {
+  id: '',
+  author: {
+    id: '',
+    avatar: '',
+    name: ''
+  },
+  img: {
+    url: ''
+  },
+  message: '',
+  likes: 0,
+  description: '',
+  comments: [
+    {
+      id: '',
+      author: {
+        id: '',
+        avatar: '',
+        name: ''
+      },
+      message: '',
+      createdAt: ''
+    }
+  ],
+  createdAt: ''
+}
+
+
 export const openPost = (post) => {
   return { type: 'OPEN_POST', post };
 }

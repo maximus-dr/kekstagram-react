@@ -6,7 +6,7 @@ export default function Header({ post }) {
     <div className="social__header">
 
       <div className="social__img">
-        <img src={post.avatar} alt="avatar" height="35" />
+        <img src={post.author.avatar} alt="avatar" height="35" />
       </div>
 
       <p className="social__caption">

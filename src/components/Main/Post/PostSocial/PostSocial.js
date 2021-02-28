@@ -9,7 +9,7 @@ import CommentsCount from './Comments/CommentsCount';
 const SHOW_COMMENTS_BY = 5;
 
 
-export default function   PostSocial({ post }) {
+export default function PostSocial({ post }) {
 
   const limit = SHOW_COMMENTS_BY;
   const commentsCount = post.comments.length;

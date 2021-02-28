@@ -6,7 +6,7 @@ export default function Comments({ comments }) {
     return (
       <li className="social__comment" key={comment.id}>
         <div className="social__comment-img">
-          <img src={comment.avatar} alt="avatar" height="35" />
+          <img src={comment.author.avatar} alt="avatar" height="35" />
         </div>
         
         <p className="social__comment-text">
@@ -21,7 +21,6 @@ export default function Comments({ comments }) {
       <ul className="social__comments">
         {commentsList}
       </ul>
-      
     </>  
   )
 }
