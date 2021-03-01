@@ -65,6 +65,7 @@ export const postTemplate = {
   },
   message: '',
   likes: 0,
+  isLiked: false,
   description: '',
   comments: [],
   createdAt: ''

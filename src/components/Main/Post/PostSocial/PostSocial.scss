@@ -65,6 +65,7 @@
       background-size: 100%;
       background-position: 0 -148px;
       opacity: 0.5;
+      transition: transform 0.15s;
     }
 
     &:hover::before,
@@ -74,11 +75,17 @@
 
     &:active::before {
       opacity: 1;
-      background-position: 0 -118px;
+      transform: scale(1.3);
     }
 
     &--active::before {
       opacity: 1;
+      background-position: 0 -118px;
+    }
+  }
+  
+  &__likes-count--active {
+    &::before {
       background-position: 0 -118px;
     }
   }

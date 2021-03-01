@@ -7,6 +7,7 @@ import { signUp } from './../../../store/actions/authActions';
 
 export default function SignUp() {
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
@@ -16,6 +17,10 @@ export default function SignUp() {
   const history = useHistory();
   const authError = useSelector(state => state.auth.signupError);
   const loadingStatus = useSelector(state => state.auth.status);
+
+  const onNameChange = e => {
+    setName(e.target.value);
+  }
 
   const onEmailChange = e => {
     setEmail(e.target.value);
@@ -67,6 +72,16 @@ export default function SignUp() {
 
 
         <form onSubmit={onSubmit}>
+
+          <label htmlFor="name">Name: </label>
+          <input 
+            type="text"
+            name="name"
+            required
+            value={name}
+            onChange={onNameChange}
+          />
+
           <label htmlFor="email">Email:</label>
           <input 
             type="text"

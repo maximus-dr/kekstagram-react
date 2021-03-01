@@ -1,8 +1,7 @@
 import React from 'react'
-import { addComment } from '../../../../../store/actions/postsActions';
-import { connect } from 'react-redux';
 
-function AddComment() {
+
+export default function AddComment() {
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -20,11 +19,3 @@ function AddComment() {
     </form>
   )
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    addComment: comment => dispatch(addComment(comment))
-  }
-}
-
-export default connect(null, mapDispatchToProps)(AddComment);

@@ -38,6 +38,23 @@ const postReducer = (state = initialState, action) => {
         ...state,
         current: null
       }
+    case 'LIKE':
+      return {
+        ...state,
+        current: {
+          ...state.current,
+          likes: state.current.likes + action.increment,
+          isLiked: action.isLiked,
+        },
+        list: {
+          ...state.list,
+          [action.id]: {
+            ...state.list[action.id],
+            likes: state.current.likes + action.increment,
+            isLiked: action.isLiked
+          }
+        }
+      }
     default:
       return state;
   }

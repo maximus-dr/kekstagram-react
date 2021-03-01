@@ -1,6 +1,21 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { like } from '../../../../../store/actions/postsActions';
+import classNames from 'classnames';
+
 
 export default function Header({ post }) {
+
+  const dispatch = useDispatch();
+
+  const addLike = () => {
+    dispatch(like(post.id, post.isLiked));
+  }
+  
+  const likeClass = classNames(
+    "social__likes-count", 
+    {"social__likes-count--active": post.isLiked}
+  );
   
   return (
     <div className="social__header">
@@ -18,7 +33,7 @@ export default function Header({ post }) {
 
       <p className="social__likes">
         <span>Нравится </span>
-        <span className="social__likes-count">
+        <span className={likeClass} onClick={addLike}>
           {post.likes}
         </span>
       </p>

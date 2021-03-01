@@ -20,7 +20,6 @@ const newPostReducer = (state = initialState, action) => {
         status: 'loading'
       }
     case 'SUBMIT_NEW_POST_SUCCESS':
-      console.log('success');
       return {
         ...state,
         status: 'success'

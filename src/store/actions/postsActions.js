@@ -1,4 +1,5 @@
 import { db } from './../../firebase/config';
+import firebase from 'firebase/app';
 
 
 export const fetchPosts = () => (dispatch) => {
@@ -32,11 +33,14 @@ export const closePost = () => {
   return { type: 'CLOSE_POST' }
 }
 
-export const addComment = (comment) => {
-  return (dispatch, getState, {getFirestore}) => {
-    const firestore = getFirestore();
-    firestore.collection('kekstagram-posts').doc('aGXgvmxEkpsf0gBa2k7X').set({
-      comments: [comment]
-    })
-  }
+export const like = (id, isLiked) => (dispatch) => {
+  const increment = isLiked ? -1 : 1;
+  isLiked = !isLiked;
+  db.collection('posts').doc(id).update({
+    likes: firebase.firestore.FieldValue.increment(increment),
+    isLiked: !isLiked
+  })
+  .then(() =>
+    dispatch({ type: 'LIKE', id, increment, isLiked })
+  )
 }

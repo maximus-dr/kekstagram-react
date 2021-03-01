@@ -8,7 +8,6 @@ import MainPreloader from './MainPreloader/MainPreloader';
 
 
 function Main({ posts }) {
-  console.log(posts.status);
 
   const dispatch = useDispatch();
   
