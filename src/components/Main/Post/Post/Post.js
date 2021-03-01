@@ -2,6 +2,7 @@ import React from 'react'
 import './Post.scss';
 import PostSocial from '../PostSocial/PostSocial';
 import PostImage from '../PostImage';
+import { connect } from 'react-redux';
 
 
 function Post({ post }) {
@@ -16,5 +17,11 @@ function Post({ post }) {
       </div>
   );
 }
+
+const mapStateToProps = state => {
+  return {
+    post: state.posts.current
+  }
+}
   
-export default Post;
+export default connect(mapStateToProps)(Post);

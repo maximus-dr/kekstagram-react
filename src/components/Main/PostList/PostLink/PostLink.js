@@ -1,7 +1,7 @@
 import React from 'react';
 import './PostLink.scss';
 import { Link, useHistory } from 'react-router-dom';
-import { closePost, openPost } from '../../../../store/actions/postActions';
+import { closePost, openPost } from '../../../../store/actions/postsActions';
 import { connect, useDispatch } from 'react-redux';
 import Modal from '../../../Modal/Modal';
 import Post from '../../Post/Post/Post';
@@ -28,7 +28,7 @@ function PostLink({ postId, posts, currentPost }) {
   return (
     <>
       <Link to={`/post/${postId}`} className="post-link" onClick={onLinkClick}> 
-        <img className="post-link__img" src={post.img.url} alt="post" width="182" height="182" />
+        <img className="post-link__img" src={post.img.url} alt="post" />
         <p className="post-link__stats">
           <span className="post-link__stat post-link__stat--comments">
             {post.comments.length}
@@ -40,7 +40,7 @@ function PostLink({ postId, posts, currentPost }) {
       </Link>
 
       <Modal isOpen={Boolean(currentPost)} close={onModalClose}>
-        <Post post={post} />
+        <Post />
       </Modal>
     </>
   )

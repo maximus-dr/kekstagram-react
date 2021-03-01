@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import { db } from './../../firebase/config';
 import { parseISO } from 'date-fns';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import { fetchPosts } from './postsActions';
 
 
 export const uploadNewPostFile = (file, imgSrc) => {
@@ -41,6 +42,7 @@ export const submitNewPost = (post) => {
       .then(() => {
         dispatch({ type: 'SUBMIT_NEW_POST_FINISH'});
         dispatch(closeNewPostForm());
+        dispatch(fetchPosts());
       })
       .catch(error => dispatch({ type: 'SUBMIT_NEW_POST_FAILURE', error }));
   }

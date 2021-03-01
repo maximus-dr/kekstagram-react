@@ -1,5 +1,5 @@
 import React from 'react'
-import { addComment } from './../../../../../store/actions/postActions';
+import { addComment } from '../../../../../store/actions/postsActions';
 import { connect } from 'react-redux';
 
 function AddComment() {
