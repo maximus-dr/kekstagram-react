@@ -1,7 +1,7 @@
 import React from 'react';
 import './PostLink.scss';
 import { Link, useHistory } from 'react-router-dom';
-import { closePost, openPost } from '../../../../store/actions/postsActions';
+import { closePost, openPost } from '../../../../store/actions/postActions';
 import { connect, useDispatch } from 'react-redux';
 import Modal from '../../../Modal/Modal';
 import Post from '../../Post/Post/Post';

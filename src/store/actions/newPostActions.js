@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import { db } from './../../firebase/config';
 import { parseISO } from 'date-fns';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { fetchPosts } from './postsActions';
+import { fetchPosts } from './postActions';
 
 
 export const uploadNewPostFile = (file, imgSrc) => {

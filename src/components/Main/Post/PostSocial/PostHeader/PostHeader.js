@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { like } from '../../../../../store/actions/postsActions';
+import { like } from '../../../../../store/actions/postActions';
 import classNames from 'classnames';
 
 
