@@ -2,11 +2,15 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import { like } from '../../../../../store/actions/postActions';
 import classNames from 'classnames';
+import { formatDateToNow } from '../../../../../utils/utils';
 
 
 export default function PostHeader({ post }) {
 
   const dispatch = useDispatch();
+  const createdAt = post.createdAt
+    ? formatDateToNow(post.createdAt)
+    : '';
 
   const addLike = () => {
     dispatch(like(post.id, post.isLiked));
@@ -27,7 +31,7 @@ export default function PostHeader({ post }) {
       <div className="social__caption">
         <p>{post.description}</p>
         <span className="social__created-at">
-          {post.createdAt}
+          {createdAt}
         </span>
       </div>
 
