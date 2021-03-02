@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import AddPost from '../AddPost/AddPost';
 import './Main.scss';
 import { connect, useDispatch } from 'react-redux';
-import PostList from '../PostList/PostList';
+import PostsList from '../PostsList/PostsList';
 import { fetchPosts } from './../../../store/actions/postsActions';
 import MainPreloader from './MainPreloader/MainPreloader';
 
@@ -20,7 +20,7 @@ function Main({ posts }) {
       {posts.status === 'loading' 
         ? <MainPreloader /> 
         : <>
-          <PostList posts={posts} />
+          <PostsList posts={posts} />
           <AddPost />
         </>
         

@@ -2,7 +2,7 @@ import React from 'react';
 import PostLink from './PostLink/PostLink';
 
 
-export default function PostList({ posts }) {
+export default function PostsList({ posts }) {
 
   return (
     <>
