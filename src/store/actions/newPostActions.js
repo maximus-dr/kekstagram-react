@@ -1,8 +1,6 @@
 import { storage } from "../../firebase/config";
 import { nanoid } from "nanoid";
 import { db } from './../../firebase/config';
-import { parseISO } from 'date-fns';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { fetchPosts } from './postActions';
 
 
@@ -30,7 +28,8 @@ export const submitNewPost = (post) => {
             name: post.name
           }, 
           img: {
-            url: fileUrl
+            url: fileUrl,
+            style: post.img.style
           },
           message: post.message,
           description: post.description,
@@ -60,7 +59,8 @@ export const postTemplate = {
     name: ''
   },
   img: {
-    url: ''
+    url: '',
+    style: ''
   },
   message: '',
   likes: 0,

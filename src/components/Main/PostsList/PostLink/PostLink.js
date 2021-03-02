@@ -28,7 +28,7 @@ function PostLink({ postId, posts, currentPost }) {
   return (
     <>
       <Link to={`/post/${postId}`} className="post-link" onClick={onLinkClick}> 
-        <img className="post-link__img" src={post.img.url} alt="post" />
+        <img className="post-link__img" src={post.img.url} alt="post" style={post.img.style} />
         <p className="post-link__stats">
           <span className="post-link__stat post-link__stat--comments">
             {post.comments.length}
