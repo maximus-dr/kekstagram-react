@@ -36,9 +36,10 @@ export const closePost = () => {
 export const like = (id, isLiked) => (dispatch) => {
   const increment = isLiked ? -1 : 1;
   isLiked = !isLiked;
+  console.log(isLiked);
   db.collection('posts').doc(id).update({
     likes: firebase.firestore.FieldValue.increment(increment),
-    isLiked: !isLiked
+    isLiked
   })
   .then(() =>
     dispatch({ type: 'LIKE', id, increment, isLiked })
