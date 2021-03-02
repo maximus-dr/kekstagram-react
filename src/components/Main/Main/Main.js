@@ -8,13 +8,14 @@ import MainPreloader from './MainPreloader/MainPreloader';
 import { Route, useHistory } from 'react-router-dom';
 import Modal from '../../Modal/Modal';
 import Post from './../Post/Post/Post';
+import SignUp from './../../Auth/SignUp/SignUp';
+import Login from './../../Auth/Login/Login';
 
 
 function Main({ posts }) {
 
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(history);
   
   useEffect(() => {
     dispatch(fetchPosts())
@@ -29,21 +30,26 @@ function Main({ posts }) {
             <PostsList posts={posts} />
             <AddPost />
 
-            <Route path="/post/:id" children={
-                ({match}) => {
-                  return (
-                    <Modal close={history.goBack} isOpen={Boolean(match)}>
-                      <Post />
-                    </Modal>
-                  )
-                }
-              } 
+            <Route path="/post/:id" children={({match}) => (
+                <Modal close={history.goBack} isOpen={Boolean(match)}>
+                  <Post />
+                </Modal>
+              )} 
+            />
+            <Route path="/signup" children={({match}) => (
+                <Modal close={history.goBack} isOpen={Boolean(match)}>
+                  <SignUp />
+                </Modal>
+              )} 
+            />
+            <Route path="/login" children={({match}) => (
+                <Modal close={history.goBack} isOpen={Boolean(match)}>
+                  <Login />
+                </Modal>
+              )} 
             />
           </> 
       }
-
-      
-      
     </div>
   );
 }
