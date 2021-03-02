@@ -1,6 +1,7 @@
 const initialState = {
   status: 'idle',
   current: null,
+  sortBy: 'new',
   ids: [],
   list: {}
 };

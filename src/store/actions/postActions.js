@@ -66,7 +66,7 @@ export const addComment = (message, post) => (dispatch) => {
 const commentTemplate = {
   id: '',
   author: {
-    avatarUrl: 'https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/SJGKVE5UNVESVCW7BBOHKQCZVE.jpg',
+    avatarUrl: 'https://firebasestorage.googleapis.com/v0/b/kekstagram-2741a.appspot.com/o/avatar.jpg?alt=media&token=31eb2327-3e13-474a-b9a6-14da17a4b1da',
     name: 'Max Ivanov'
   },
   message: '',

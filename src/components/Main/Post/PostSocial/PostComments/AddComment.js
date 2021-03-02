@@ -20,7 +20,7 @@ function AddComment({ post }) {
   return (
     <form className="social__footer" onSubmit={onSubmit}>
       <div className="social__comment-img">
-        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/SJGKVE5UNVESVCW7BBOHKQCZVE.jpg" alt="avatar" height="35" />
+        <img src="https://firebasestorage.googleapis.com/v0/b/kekstagram-2741a.appspot.com/o/avatar.jpg?alt=media&token=31eb2327-3e13-474a-b9a6-14da17a4b1da" alt="avatar" height="35" />
       </div>
       
       <input 
