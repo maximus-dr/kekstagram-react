@@ -9,18 +9,18 @@ export default function PostsList({ posts }) {
   const sortIds = (sortBy) => {
     
     switch (sortBy) {
-      case 'new':
+      case 'Новые':
         return posts.ids.sort((a, b) => posts.list[b].createdAt.localeCompare(posts.list[a].createdAt));
-      case 'popular':
+      case 'Популярные':
         return posts.ids.sort((a, b) => posts.list[b].likes - posts.list[a].likes);
-      case 'discussed':
+      case 'Обсуждаемые':
         return posts.ids.sort((a, b) => posts.list[b].comments.length - posts.list[a].comments.length);
       default:
         return [];
     }
   }
 
-  const sortedIds = sortIds('discussed');
+  const sortedIds = sortIds(posts.sortBy);
 
 
   return (

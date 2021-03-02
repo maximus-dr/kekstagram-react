@@ -1,15 +1,20 @@
 import React from 'react'
 import { useState } from 'react';
 import classNames from 'classnames';
+import { useDispatch } from 'react-redux';
+import { sortPosts } from '../../../store/actions/postActions';
 
 
 export default function NavButtons() {
 
-  const navButtons = ['Популярные', 'Новые', 'Обсуждаемые'];
+  const navButtons = ['Новые', 'Популярные', 'Обсуждаемые'];
   const [activeButton, setActiveButton] = useState(navButtons[0]);
+
+  const dispatch = useDispatch();
 
   const onNavButtonClick = e => {
     setActiveButton(e.target.name);
+    dispatch(sortPosts(e.target.name));
   }
 
   return (

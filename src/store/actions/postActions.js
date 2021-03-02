@@ -26,6 +26,10 @@ export const fetchPosts = () => (dispatch) => {
     })
 }
 
+export const sortPosts = (sortBy) => {
+  return { type: 'SORT_POSTS', sortBy }
+}
+
 export const openPost = (post) => {
   return { type: 'OPEN_POST', post }
 }

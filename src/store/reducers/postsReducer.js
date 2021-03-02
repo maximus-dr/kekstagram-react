@@ -1,7 +1,7 @@
 const initialState = {
   status: 'idle',
   current: null,
-  sortBy: 'new',
+  sortBy: 'Новые',
   ids: [],
   list: {}
 };
@@ -28,6 +28,11 @@ const postReducer = (state = initialState, action) => {
         ...state,
         error: action.error,
         status: 'error'
+      }
+    case 'SORT_POSTS':
+      return {
+        ...state,
+        sortBy: action.sortBy
       }
     case 'OPEN_POST':
       return {
