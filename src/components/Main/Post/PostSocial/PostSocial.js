@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './PostSocial.scss';
-import Comments from './Comments/Comments';
+import Comments from './PostComments/Comments';
 import PostHeader from './PostHeader/PostHeader';
-import AddComment from './Comments/AddComment';
-import CommentsCount from './Comments/CommentsCount';
+import AddComment from './PostComments/AddComment';
+import CommentsCount from './PostComments/CommentsCount';
 
 
 const SHOW_COMMENTS_BY = 5;
