@@ -4,7 +4,7 @@ import { like } from '../../../../../store/actions/postsActions';
 import classNames from 'classnames';
 
 
-export default function Header({ post }) {
+export default function PostHeader({ post }) {
 
   const dispatch = useDispatch();
 

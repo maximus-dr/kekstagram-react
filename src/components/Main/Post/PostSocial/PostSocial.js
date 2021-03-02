@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './PostSocial.scss';
 import Comments from './Comments/Comments';
-import Header from './Header/Header';
+import PostHeader from './PostHeader/PostHeader';
 import AddComment from './Comments/AddComment';
 import CommentsCount from './Comments/CommentsCount';
 
@@ -53,7 +53,7 @@ export default function PostSocial({ post }) {
 
   return (
     <div className="social">
-      <Header post={post} />
+      <PostHeader post={post} />
       <CommentsCount shown={commentsShown} total={commentsCount} />
       <Comments comments={comments} />
       {
