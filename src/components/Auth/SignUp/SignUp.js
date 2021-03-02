@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import s from './SignUp.module.scss';
+import './SignUp.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from './../../../store/actions/authActions';
 
 
-export default function SignUp(props) {
-  console.log(props);
+export default function SignUp() {
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -65,9 +64,9 @@ export default function SignUp(props) {
 
 
   return (
-    <section className={s.signup}>
+    <section className="signup">
       <div>
-        <h2>Sign Up</h2>
+        <h2 className="signup__title">Sign Up</h2>
         {error && <div>{error}</div>}
         {authError && <div>{authError.message}</div>}
 
@@ -110,7 +109,7 @@ export default function SignUp(props) {
             onChange={onPasswordConfirmChange}
           />
 
-          <button type="submit">
+          <button className="signup__submit" type="submit">
             {
               loadingStatus === 'loading'
                 ? 'Loading...'
@@ -120,11 +119,14 @@ export default function SignUp(props) {
         </form>
 
       </div>
-      <div>
-        <Link to="/">Вернуться на главную</Link>
-      </div>
-      <div>
-        Уже есть аккаунт? <Link to="login">Log In</Link>
+      <div className="signup__footer">
+        <div>
+          <span>Уже есть аккаунт? </span>
+          <Link className="signup__to-login" to="login">Log In</Link>
+        </div>
+        <div>
+          <Link className="signup__to-main" to="/">на главную</Link>
+        </div>
       </div>
     </section>
   )

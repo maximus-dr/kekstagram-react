@@ -37,13 +37,13 @@ function Main({ posts }) {
               )} 
             />
             <Route path="/signup" children={({match}) => (
-                <Modal close={history.goBack} isOpen={Boolean(match)}>
+                <Modal close={() => history.push('/')} isOpen={Boolean(match)}>
                   <SignUp />
                 </Modal>
               )} 
             />
             <Route path="/login" children={({match}) => (
-                <Modal close={history.goBack} isOpen={Boolean(match)}>
+                <Modal close={() => history.push('/')} isOpen={Boolean(match)}>
                   <Login />
                 </Modal>
               )} 
