@@ -5,11 +5,16 @@ import { connect, useDispatch } from 'react-redux';
 import PostsList from '../PostsList/PostsList';
 import { fetchPosts } from './../../../store/actions/postActions';
 import MainPreloader from './MainPreloader/MainPreloader';
+import { Route, useHistory } from 'react-router-dom';
+import Modal from '../../Modal/Modal';
+import Post from './../Post/Post/Post';
 
 
 function Main({ posts }) {
 
   const dispatch = useDispatch();
+  const history = useHistory();
+  console.log(history);
   
   useEffect(() => {
     dispatch(fetchPosts())
@@ -23,8 +28,21 @@ function Main({ posts }) {
           : <>
             <PostsList posts={posts} />
             <AddPost />
+
+            <Route path="/post/:id" children={
+                ({match}) => {
+                  return (
+                    <Modal close={history.goBack} isOpen={Boolean(match)}>
+                      <Post />
+                    </Modal>
+                  )
+                }
+              } 
+            />
           </> 
       }
+
+      
       
     </div>
   );

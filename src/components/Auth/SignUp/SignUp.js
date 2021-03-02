@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from './../../../store/actions/authActions';
 
 
-export default function SignUp() {
+export default function SignUp(props) {
+  console.log(props);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

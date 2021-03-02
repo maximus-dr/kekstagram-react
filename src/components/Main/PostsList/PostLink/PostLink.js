@@ -18,10 +18,10 @@ function PostLink({ postId, posts, currentPost }) {
     dispatch(openPost(post));
   }
 
-  const onModalClose = () => {
-    dispatch(closePost());
-    history.push('/');
-  }
+  // const onModalClose = () => {
+  //   dispatch(closePost());
+  //   history.push('/');
+  // }
 
   if (!post) return null;
 
@@ -39,9 +39,9 @@ function PostLink({ postId, posts, currentPost }) {
         </p>
       </Link>
 
-      <Modal isOpen={Boolean(currentPost)} close={onModalClose}>
+      {/* <Modal isOpen={Boolean(currentPost)} close={onModalClose}>
         <Post />
-      </Modal>
+      </Modal> */}
     </>
   )
 }
