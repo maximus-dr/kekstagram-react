@@ -34,8 +34,7 @@ export const submitNewPost = (post) => {
           },
           message: post.message,
           description: post.description,
-          createdAt: formatDistanceToNow(
-            parseISO(new Date().toISOString()), { representation: 'date' }) 
+          createdAt: new Date().toISOString()
         });
       })
       .then(() => dispatch({ type: 'SUBMIT_NEW_POST_SUCCESS'}))
