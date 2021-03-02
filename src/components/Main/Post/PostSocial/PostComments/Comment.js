@@ -1,15 +1,12 @@
-import { parseISO } from 'date-fns';
 import React from 'react'
-import { formatDistanceToNow } from 'date-fns/esm';
+import { formatDateToNow } from '../../../../../utils/utils';
+
 
 export default function Comment({ comment }) {
 
-  let timeAgo = '';
-
-  if (comment.createdAt) {
-    const date = parseISO(comment.createdAt);
-    timeAgo = formatDistanceToNow(date);
-  }
+  let timeAgo = comment.createdAt
+    ? formatDateToNow(comment.createdAt)
+    : '';
   
 
   return (
@@ -21,7 +18,7 @@ export default function Comment({ comment }) {
       <div className="social__comment-text">
         <p>{comment.message}</p>
         <span className="social__created-at">
-          {timeAgo} ago
+          {timeAgo}
         </span>
       </div>
     </li>
