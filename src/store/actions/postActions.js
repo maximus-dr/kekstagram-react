@@ -1,5 +1,6 @@
 import { db } from '../../firebase/config';
 import firebase from 'firebase/app';
+import { nanoid } from 'nanoid';
 
 
 export const fetchPosts = () => (dispatch) => {
@@ -36,7 +37,6 @@ export const closePost = () => {
 export const like = (id, isLiked) => (dispatch) => {
   const increment = isLiked ? -1 : 1;
   isLiked = !isLiked;
-  console.log(isLiked);
   db.collection('posts').doc(id).update({
     likes: firebase.firestore.FieldValue.increment(increment),
     isLiked
@@ -44,4 +44,31 @@ export const like = (id, isLiked) => (dispatch) => {
   .then(() =>
     dispatch({ type: 'LIKE', id, increment, isLiked })
   )
+}
+
+export const addComment = (message, post) => (dispatch) => {
+  const comment = {
+    ...commentTemplate,
+    id: nanoid(),
+    message,
+    createdAt: new Date().toISOString()
+  }
+  const comments = [...post.comments, comment];
+
+  db.collection('posts').doc(post.id).update({
+    comments
+  })
+    .then(() => dispatch({ type: 'ADD_COMMENT_SUCCESS', comments, postId: post.id }))
+    .catch(error => dispatch({ type: 'ADD_COMMETN_ERROR', error }))
+}
+
+
+const commentTemplate = {
+  id: '',
+  author: {
+    avatarUrl: 'https://cloudfront-us-east-1.images.arcpublishing.com/advancelocal/SJGKVE5UNVESVCW7BBOHKQCZVE.jpg',
+    name: 'Max Ivanov'
+  },
+  message: '',
+  createdAt: ''
 }

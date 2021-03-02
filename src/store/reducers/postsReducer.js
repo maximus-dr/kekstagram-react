@@ -55,6 +55,22 @@ const postReducer = (state = initialState, action) => {
           }
         }
       }
+      case 'ADD_COMMENT_SUCCESS':
+        return {
+          ...state,
+          current: {
+            ...state.current,
+            comments: action.comments
+          },
+          list: {
+            ...state.list,
+            [action.postId]: {
+              ...state.list[action.postId],
+              comments: action.comments
+            }
+              
+          }
+        }
     default:
       return state;
   }
