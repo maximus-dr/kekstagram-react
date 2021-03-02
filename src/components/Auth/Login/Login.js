@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import s from './Login.module.scss';
+import './Login.scss';
 import { login } from '../../../store/actions/authActions';
 
 
@@ -40,9 +40,9 @@ export default function Login() {
   });
 
   return (
-    <section className={s.login}>
+    <section className="login">
       <div>
-        <h2>Log In</h2>
+        <h2 className="login__title">Log In</h2>
         {authError && <div>{authError.message}</div>}
 
         <form onSubmit={onSubmit}>
@@ -64,7 +64,7 @@ export default function Login() {
             onChange={onPasswordChange}
           />
 
-          <button type="submit">
+          <button className="login__submit" type="submit">
             {
               loadingStatus === 'loading'
                 ? 'Loading...'
@@ -74,11 +74,14 @@ export default function Login() {
         </form>
 
       </div>
-      <div>
-        <Link to="/">Вернуться на главную</Link>
-      </div>
-      <div>
-        Нужен аккаунт? <Link to="signup">Sign Up</Link>
+      <div className="login__footer">
+        <div>
+          <span>Нужен аккаунт? </span>
+          <Link className="login__to-signup" to="signup">Sign Up</Link>
+        </div>
+        <div>
+          <Link className="login__to-main" to="/">Вернуться на главную</Link>
+        </div>
       </div>
     </section>
   )
