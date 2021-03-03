@@ -8,9 +8,31 @@
     margin-bottom: 30px;
   }
 
+  &__error {
+    padding: 15px;
+    margin-bottom: 25px;
+    background-color:  #ff4e4e;
+  }
+
+  & sup {
+    color:  #ff4e4e;
+  }
+
   & input {
+    padding: 5px 15px;
     width: 100%;
     margin-bottom: 15px;
+  }
+
+  &__label-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__note {
+    transform: translateY(10px);
+    font-size: 12px;
+    line-height: 12px;
   }
 
   &__submit {
@@ -28,6 +50,28 @@
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.1s, color 0.1s, transform 0.1s;
+
+    &:hover {
+      background-color: #ff4e4e;
+      color: #ffffff;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    &:disabled {
+      color: rgba(255,78,78, 0.5);
+      cursor: default;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: rgba(255,78,78, 0.5);
+        background-color: #ffffff;
+      }
+    }
   }
 
   &__footer {
@@ -41,10 +85,18 @@
     color: #ff4e4e;
     font-weight: bold;
     font-size: 16px;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 
   &__to-main {
     color: #ffffff;
     font-weight: 600;
+
+    &:hover {
+      color:  #ff4e4e; 
+    }
   }
 }

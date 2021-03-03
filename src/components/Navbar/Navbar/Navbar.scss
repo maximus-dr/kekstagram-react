@@ -28,6 +28,11 @@
     cursor: pointer;
     background-color: #232321;
     border: none;
+    transition: color 0.1s;
+
+    &:hover {
+      color: #ff4e4e;
+    }
 
     &--active {
       color: #ff4e4e;   
@@ -53,5 +58,10 @@
     font-size: 18px;
     text-decoration: none;
     color: #ffffff;
+    transition: color 0.1s, transform 0.1s;
+
+    &:hover {
+      color:  #ffe753;
+    }
   }
 }

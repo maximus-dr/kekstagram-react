@@ -8,6 +8,8 @@ function AddComment({ post }) {
   const [message, setMessage] = useState('');
   const dispatch = useDispatch();
 
+  const canSubmit = Boolean(message);
+
   const onInputChange = e => {
     setMessage(e.target.value);
   }
@@ -15,6 +17,7 @@ function AddComment({ post }) {
   const onSubmit = e => {
     e.preventDefault();
     dispatch(addComment(message, post));
+    setMessage('');
   }
 
   return (
@@ -31,7 +34,9 @@ function AddComment({ post }) {
         onChange={onInputChange}
       />
 
-      <button className="social__footer-submit">Отправить</button>
+      <button className="social__footer-submit" disabled={!canSubmit}>
+        Отправить
+      </button>
     </form>
   )
 }

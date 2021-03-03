@@ -18,6 +18,8 @@ export default function SignUp() {
   const authError = useSelector(state => state.auth.signupError);
   const loadingStatus = useSelector(state => state.auth.status);
 
+  const canSubmit = Boolean(name) && Boolean(email) && Boolean(password) && Boolean(passwordConfirm);
+
   const onNameChange = e => {
     setName(e.target.value);
   }
@@ -67,49 +69,72 @@ export default function SignUp() {
     <section className="signup">
       <div>
         <h2 className="signup__title">Sign Up</h2>
-        {error && <div>{error}</div>}
-        {authError && <div>{authError.message}</div>}
+
+        {error && <div className="signup__error">{error}</div>}
+        {authError && <div className="signup__error">{authError.message}</div>}
 
 
         <form onSubmit={onSubmit}>
 
-          <label htmlFor="name">Name: </label>
+          <label htmlFor="name">
+            Name:<sup>*</sup>
+          </label>
           <input 
             type="text"
             name="name"
             required
             value={name}
             onChange={onNameChange}
+            placeholder="name"
           />
 
-          <label htmlFor="email">Email:</label>
+          <div className="signup__label-wrap">
+            <label htmlFor="email">
+              Email:<sup>*</sup>
+            </label>
+            <span className="signup__note">
+              (Можно несуществующий)
+            </span>
+          </div>
           <input 
             type="text"
             name="email"
             required
             value={email}
             onChange={onEmailChange}
+            placeholder="test@email.com"
           />
 
-          <label htmlFor="password">Password:</label>
+          <div className="signup__label-wrap">
+            <label htmlFor="password">
+              Password:<sup>*</sup>
+            </label>
+            <span className="signup__note">
+              (Не менее 6 символов)
+            </span>
+          </div>
           <input 
             type="password"
             name="password"
             required
             value={password}
             onChange={onPasswordChange}
+            placeholder="password"
           />
 
-          <label htmlFor="password-confirm">Confirm Password:</label>
+          <label htmlFor="password-confirm">
+            Confirm Password:<sup>*</sup>
+          </label>
           <input 
             type="password"
             name="password-confirm"
             required
             value={passwordConfirm}
             onChange={onPasswordConfirmChange}
+            placeholder="confirm password"
           />
 
-          <button className="signup__submit" type="submit">
+          <button className="signup__submit" type="submit" disabled={!canSubmit}>
             {
               loadingStatus === 'loading'
                 ? 'Loading...'

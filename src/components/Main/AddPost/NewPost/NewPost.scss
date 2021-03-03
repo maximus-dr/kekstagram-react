@@ -49,15 +49,16 @@
     border: 0;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.1s, transform 0.1s;
+    outline: none;
   }
   
-  &__submit:hover,
-  &__submit:focus {
+  &__submit:hover {
     background-color: rgba(255, 231, 82, 0.4);
   }
   
   &__submit:active {
-    transform: translateY(1px);
+    transform: scale(0.8);
   }
   
   &__submit:disabled,

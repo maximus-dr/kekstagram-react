@@ -43,7 +43,7 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
-
+    
     &::after {
       z-index: 100;
       content: "";
@@ -56,6 +56,7 @@
       background-repeat: no-repeat;
       background-position: center;
       filter: drop-shadow(0 0 10px #943106);
+      transition: transform 0.1s;
     }
 
     &:hover::after,

@@ -17,6 +17,8 @@ export default function Login() {
   const onEmailChange = e => setEmail(e.target.value);
   const onPasswordChange = e => setPassword(e.target.value);
 
+  const canSubmit = Boolean(email) && Boolean(password);
+
   const onSubmit = e => {
     e.preventDefault();
     dispatch(login(email, password));
@@ -32,7 +34,7 @@ export default function Login() {
     }
   }, [loadingStatus, history]);
 
-  // Clean up error warning bu unmounting
+  // Clean up error warning by unmounting
   useEffect(() => {
     if (loadingStatus === 'error') {
       return () => dispatch({ type: 'CLEANUP_LOGIN_ERROR'});
@@ -43,28 +45,30 @@ export default function Login() {
     <section className="login">
       <div>
         <h2 className="login__title">Log In</h2>
-        {authError && <div>{authError.message}</div>}
+        {authError && <div className="login__error">{authError.message}</div>}
 
         <form onSubmit={onSubmit}>
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Email:<sup>*</sup></label>
           <input 
             type="text"
             name="email"
             required
             value={email}
             onChange={onEmailChange}
+            placeholder="test@email.com"
           />
 
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Password:<sup>*</sup></label>
           <input 
             type="password"
             name="password"
             required
             value={password}
             onChange={onPasswordChange}
+            placeholder="password"
           />
 
-          <button className="login__submit" type="submit">
+          <button className="login__submit" type="submit" disabled={!canSubmit}>
             {
               loadingStatus === 'loading'
                 ? 'Loading...'
