@@ -4,19 +4,19 @@ import Comments from './PostComments/Comments';
 import PostHeader from './PostHeader/PostHeader';
 import AddComment from './PostComments/AddComment';
 import CommentsCount from './PostComments/CommentsCount';
-
-
-const SHOW_COMMENTS_BY = 5;
+import { SHOW_COMMENTS_BY } from '../../../../store/constants';
 
 
 export default function PostSocial({ post }) {
 
+  // Sort comments by newest
   const comments = post.comments.sort((a, b) => {
     return b.createdAt.localeCompare(a.createdAt);
   });
 
   const step = SHOW_COMMENTS_BY;
   
+  // Shown comments slice
   const [list, setList] = useState(() => {
     let slice = [];
     if (comments.length <= step) {
@@ -27,6 +27,7 @@ export default function PostSocial({ post }) {
     return slice;
   });
 
+  // Set shown comments slice
   useEffect(() => {
     comments.length > step
       ? setList(comments.slice(0, step))

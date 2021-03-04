@@ -1,9 +1,11 @@
 import React from 'react';
-import { resize } from '../NewPost';
 import './NewPostResize.scss';
+import { NEW_POST_RESIZE } from './../../../../../store/constants';
 
 
 export default function NewPostResize({ onResize, resizeValue }) {
+
+  const resize = NEW_POST_RESIZE;
 
   const disablePlus = resizeValue === resize.max;
   const disableMinus = resizeValue === resize.min;

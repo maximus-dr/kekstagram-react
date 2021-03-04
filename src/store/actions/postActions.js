@@ -1,11 +1,16 @@
 import { db } from '../../firebase/config';
 import firebase from 'firebase/app';
 import { nanoid } from 'nanoid';
+import { COMMENT_TEMPLATE } from './../constants';
+
+
+const commentTemplate = COMMENT_TEMPLATE;
 
 
 export const fetchPosts = () => (dispatch) => {
 
   dispatch({ type: 'FETCH_POSTS_START' });
+  dispatch(sortPosts('Новые'));
 
   const ids = [];
   const postsList = {};
@@ -64,16 +69,4 @@ export const addComment = (message, post) => (dispatch) => {
   })
     .then(() => dispatch({ type: 'ADD_COMMENT_SUCCESS', comments, postId: post.id }))
     .catch(error => dispatch({ type: 'ADD_COMMETN_ERROR', error }))
-}
-
-
-const commentTemplate = {
-  id: '',
-  author: {
-    avatarUrl: 'https://firebasestorage.googleapis.com/v0/b/kekstagram-2741a.appspot.com/o/avatar.jpg?alt=media&token=31eb2327-3e13-474a-b9a6-14da17a4b1da',
-    // dummy data
-    name: 'Max Ivanov'
-  },
-  message: '',
-  createdAt: ''
 }

@@ -1,27 +1,18 @@
 import React from 'react';
 import './PostLink.scss';
-import { Link, useHistory } from 'react-router-dom';
-import { closePost, openPost } from '../../../../store/actions/postActions';
+import { Link } from 'react-router-dom';
+import { openPost } from '../../../../store/actions/postActions';
 import { connect, useDispatch } from 'react-redux';
-import Modal from '../../../Modal/Modal';
-import Post from '../../Post/Post/Post';
 
 
-function PostLink({ postId, posts, currentPost }) {
+function PostLink({ postId, posts }) {
   
   const post = posts[postId];
   const dispatch = useDispatch();
-  const history = useHistory();
   
-
   const onLinkClick = () => {
     dispatch(openPost(post));
   }
-
-  // const onModalClose = () => {
-  //   dispatch(closePost());
-  //   history.push('/');
-  // }
 
   if (!post) return null;
 
@@ -38,10 +29,6 @@ function PostLink({ postId, posts, currentPost }) {
           </span>
         </p>
       </Link>
-
-      {/* <Modal isOpen={Boolean(currentPost)} close={onModalClose}>
-        <Post />
-      </Modal> */}
     </>
   )
 }

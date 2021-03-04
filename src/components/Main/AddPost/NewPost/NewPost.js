@@ -8,49 +8,19 @@ import NewPostEffects from './NewPostEffects/NewPostEffects';
 import NewPostText from './NewPostText/NewPostText';
 import { submitNewPost } from '../../../../store/actions/newPostActions';
 import Loader from './../../../Modal/Loader/Loader';
-
-
-export const resize = {
-  default: 100,
-  min: 50,
-  max: 150,
-  step: 25,
-}
-
-const effects = {
-  none: {
-    filter: 'none'
-  },
-  chrome: {
-    filter: 'grayscale',
-    max: 1
-  },
-  sepia: {
-    filter: 'sepia',
-    max: 1
-  },
-  marvin: {
-    filter: 'invert',
-    max: 100,
-    unit: '%'
-  },
-  phobos: {
-    filter: 'blur',
-    max: 3,
-    unit: 'px'
-  },
-  heat: {
-    filter: 'brightness',
-    max: 3
-  }
-};
+import { NEW_POST_EFFECTS } from '../../../../store/constants';
+import { NEW_POST_RESIZE } from './../../../../store/constants';
 
 
 function NewPost({ newPost }) {
 
+  const effects = NEW_POST_EFFECTS;
+  const resize = NEW_POST_RESIZE;
+
   const dispatch = useDispatch();
   const [currentEffect, setCurrentEffect] = useState(effects.none);
 
+  // Toggle effect by clicking on the effect icon
   const onEffectToggle = e => {
     e.target.checked = true;
     e.target.focus();
@@ -62,6 +32,7 @@ function NewPost({ newPost }) {
     
   }
 
+  // Set effect depth depending on scaleValue
   const setEffectDepth = (effect, value) => {
     if (effect.filter === 'none') return 'none';
 
@@ -73,6 +44,7 @@ function NewPost({ newPost }) {
     return `${effect.filter}(${depth + unit})`
   }
 
+  // Change image size by clicking plus/minus button
   const scaleImg = (value) => {
     if (value === 100) return '';
     return `translateX(-50%) scale(${value / 100})`;

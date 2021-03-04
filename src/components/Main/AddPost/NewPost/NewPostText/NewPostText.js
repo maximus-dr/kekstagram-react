@@ -13,7 +13,7 @@ export default function NewPostText({ onDescriptionChange, onMessageChange }) {
           type="text" 
           id="hashtags" 
           name="hashtags" 
-          placeholder="#хэш-тег" 
+          placeholder="Заголовок" 
           minLength="2" 
           maxLength="104"
           onChange={onDescriptionChange}

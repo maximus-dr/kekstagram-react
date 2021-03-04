@@ -2,6 +2,10 @@ import { storage } from "../../firebase/config";
 import { nanoid } from "nanoid";
 import { db } from './../../firebase/config';
 import { fetchPosts } from './postActions';
+import { POST_TEMPLATE } from "../constants";
+
+
+const postTemplate = POST_TEMPLATE;
 
 
 export const uploadNewPostFile = (file, imgSrc) => {
@@ -48,24 +52,4 @@ export const submitNewPost = (post) => {
 
 export const closeNewPostForm = () => {
   return { type: 'CLOSE_NEW_POST_FORM' }
-}
-
-
-export const postTemplate = {
-  id: '',
-  author: {
-    id: '',
-    avatar: '',
-    name: ''
-  },
-  img: {
-    url: '',
-    style: ''
-  },
-  message: '',
-  likes: 0,
-  isLiked: false,
-  description: '',
-  comments: [],
-  createdAt: ''
 }

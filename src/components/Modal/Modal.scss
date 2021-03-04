@@ -35,7 +35,7 @@
     border-radius: 2px;
     opacity: 0.6;
     outline: none;
-    transition: transform 0.01s;
+    transition: transform 0.01s, opacity 0.1s;
 
     &:hover {
       background-color: rgba(255, 255, 255, 0.4);
@@ -43,7 +43,7 @@
     }
 
     &:active {
-      transform: translateY(2px);
+      transform: translateY(3px);
     }
   }
 }
