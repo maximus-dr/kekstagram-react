@@ -88,14 +88,9 @@ export default function SignUp() {
             placeholder="name"
           />
 
-          <div className="signup__label-wrap">
-            <label htmlFor="email">
-              Email:<sup>*</sup>
-            </label>
-            <span className="signup__note">
-              (Можно несуществующий)
-            </span>
-          </div>
+          <label htmlFor="email">
+            Email:<sup>*</sup>
+          </label>
           <input 
             type="text"
             name="email"

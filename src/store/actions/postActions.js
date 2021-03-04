@@ -71,6 +71,7 @@ const commentTemplate = {
   id: '',
   author: {
     avatarUrl: 'https://firebasestorage.googleapis.com/v0/b/kekstagram-2741a.appspot.com/o/avatar.jpg?alt=media&token=31eb2327-3e13-474a-b9a6-14da17a4b1da',
+    // dummy data
     name: 'Max Ivanov'
   },
   message: '',
