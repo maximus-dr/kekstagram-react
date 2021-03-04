@@ -84,7 +84,7 @@ export default function Login() {
           <Link className="login__to-signup" to="signup">Sign Up</Link>
         </div>
         <div>
-          <Link className="login__to-main" to="/">Вернуться на главную</Link>
+          <Link className="login__to-main" to="/">на главную</Link>
         </div>
       </div>
     </section>

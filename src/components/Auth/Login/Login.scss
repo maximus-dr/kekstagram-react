@@ -71,6 +71,7 @@
     color: #ff4e4e;
     font-weight: bold;
     font-size: 16px;
+    transition: color 0.1s;
 
     &:hover {
       color: #ffffff;
@@ -80,9 +81,10 @@
   &__to-main {
     color: #ffffff;
     font-weight: 600;
+    transition: color 0.1s;
 
     &:hover {
-      color: #ff4e4e;
+      color: #ffe753;
     }
   }
 }
