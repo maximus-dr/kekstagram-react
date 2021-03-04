@@ -1,7 +1,7 @@
 # kekstagram   :camera:
 
 ## Description
-This is the service for browsing and publishing images.
+This is a service for browsing and publishing images.
 
 ## You can try it locally
 Run
