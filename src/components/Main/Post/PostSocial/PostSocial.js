@@ -6,40 +6,44 @@ import AddComment from './PostComments/AddComment';
 import CommentsCount from './PostComments/CommentsCount';
 
 
-//const SHOW_COMMENTS_BY = 5;
+const SHOW_COMMENTS_BY = 5;
 
 
 export default function PostSocial({ post }) {
 
-  const comments = post.comments;
+  const comments = post.comments.sort((a, b) => {
+    return b.createdAt.localeCompare(a.createdAt);
+  });
+
+  const step = SHOW_COMMENTS_BY;
   
   const [list, setList] = useState(() => {
     let slice = [];
-    if (comments.length <= 5) {
+    if (comments.length <= step) {
       slice = comments.slice();
-    } else if (comments.length > 5) {
-      slice = comments.slice(0, 5);
+    } else if (comments.length > step) {
+      slice = comments.slice(0, step);
     }
     return slice;
   });
 
   useEffect(() => {
-    comments.length > 5
-      ? setList(comments.slice(0, 5))
+    comments.length > step
+      ? setList(comments.slice(0, step))
       : setList(comments.slice());
-  }, [comments])
+  }, [comments, step])
 
 
   const onLoadMore = () => {
-    if (comments.length - list.length > 5) {
-      setList(comments.slice(0, list.length + 5));
+    if (comments.length - list.length > step) {
+      setList(comments.slice(0, list.length + step));
     } else {
       setList(comments.slice());
     }
   }
 
   const onHide = () => {
-    setList(comments.slice(0, 5));
+    setList(comments.slice(0, step));
   }
 
   return (
@@ -52,14 +56,14 @@ export default function PostSocial({ post }) {
       <Comments comments={list} />
 
       { 
-        comments.length > 5 &&
+        comments.length > step &&
         comments.length - list.length > 0 &&
         <button className="social__loadmore" onClick={onLoadMore}>
           Загрузить еще
         </button>
       }
       { 
-        comments.length > 5 &&
+        comments.length > step &&
         comments.length - list.length === 0 &&
         <button className="social__hide-comments" onClick={onHide}>
           Свернуть
